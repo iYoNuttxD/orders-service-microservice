@@ -1,0 +1,55 @@
+{
+  "name": "orders-service-microservice",
+  "version": "1.0.0",
+  "description": "Microservice de Pedidos com MongoDB Atlas",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:db": "node test-connection.js",
+    "seed": "node scripts/seed.js",
+    "docker:build": "docker build -t orders-service:latest .",
+    "docker:run": "docker run -p 3002:3002 --env-file .env orders-service:latest",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f orders-service",
+    "docker:dev": "docker-compose -f docker-compose.dev.yml up",
+    "docker:dev:down": "docker-compose -f docker-compose.dev.yml down",
+    "lint": "eslint src/**/*.js",
+    "format": "prettier --write 'src/**/*.js'"
+  },
+  "keywords": [
+    "microservice",
+    "orders",
+    "mongodb",
+    "node",
+    "express"
+  ],
+  "author": "iYoNuttxD",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^8.0.0",
+    "dotenv": "^16.3.1",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "express-validator": "^7.0.1",
+    "winston": "^3.11.0",
+    "morgan": "^1.10.0",
+    "swagger-ui-express": "^5.0.0",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "mongodb-memory-server": "^9.1.3",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  orders-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: orders-service-dev
+    ports:
+      - "3002:3002"
+    environment:
+      - NODE_ENV=development
+      - PORT=3002
+      - MONGODB_URI=mongodb://admin:admin123@mongodb:27017/OrdersDB?authSource=admin
+      - LOG_LEVEL=debug
+    volumes:
+      - ./src:/app/src
+      - ./logs:/app/logs
+    networks:
+      - erp-network
+    depends_on:
+      - mongodb
+    command: npm run dev
+
+  mongodb:
+    image: mongo:7
+    container_name: mongodb-dev
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin123
+    volumes:
+      - mongodb-dev-data:/data/db
+    networks:
+      - erp-network
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=admin123
+      - ME_CONFIG_MONGODB_URL=mongodb://admin:admin123@mongodb:27017/
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=admin
+    networks:
+      - erp-network
+    depends_on:
+      - mongodb
+
+volumes:
+  mongodb-dev-data:
+
+networks:
+  erp-network:
+    driver: bridge

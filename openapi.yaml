@@ -1,0 +1,1126 @@
+openapi: 3.0.3
+info:
+  title: Orders Service API
+  description: |
+    **Microservice de Pedidos com MongoDB Atlas**
+    
+    Gerenciamento completo de:
+    - 👥 Clientes
+    - 🍽️ Restaurantes
+    - 📋 Cardápios
+    - 🛒 Pedidos
+    - ⭐ Avaliações
+    - 💳 Pagamentos
+    
+    Desenvolvido por: **iYoNuttxD**
+    
+    Data: 2025-10-26
+  version: 1.0.0
+  contact:
+    name: iYoNuttxD
+    url: https://github.com/iYoNuttxD
+    email: support@ordersservice.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:3002/api/v1
+    description: Servidor de Desenvolvimento Local
+  - url: https://orders-service.azurewebsites.net/api/v1
+    description: Servidor de Produção (Azure)
+
+tags:
+  - name: Health
+    description: Status do serviço
+  - name: Clientes
+    description: Operações relacionadas aos clientes
+  - name: Restaurantes
+    description: Operações relacionadas aos restaurantes
+  - name: Cardápios
+    description: Operações relacionadas aos cardápios
+  - name: Pedidos
+    description: Operações relacionadas aos pedidos
+  - name: Avaliações
+    description: Operações relacionadas às avaliações
+  - name: Pagamentos
+    description: Operações relacionadas aos pagamentos
+
+paths:
+  # ==================== HEALTH ====================
+  /health:
+    get:
+      tags:
+        - Health
+      summary: Verificar status do serviço
+      description: Retorna o status de saúde do microservice
+      responses:
+        '200':
+          description: Serviço operacional
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: UP
+                  timestamp:
+                    type: string
+                    format: date-time
+                  service:
+                    type: string
+                    example: Orders Service
+                  version:
+                    type: string
+                    example: 1.0.0
+                  database:
+                    type: string
+                    example: MongoDB Atlas
+
+  # ==================== CLIENTES ====================
+  /clientes:
+    get:
+      tags:
+        - Clientes
+      summary: Listar todos os clientes
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [ATIVO, INATIVO, BLOQUEADO]
+        - name: search
+          in: query
+          description: Buscar por nome ou email
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lista de clientes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClienteListResponse'
+
+    post:
+      tags:
+        - Clientes
+      summary: Criar novo cliente
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateClienteRequest'
+      responses:
+        '201':
+          description: Cliente criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClienteResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '409':
+          $ref: '#/components/responses/Conflict'
+
+  /clientes/{id}:
+    get:
+      tags:
+        - Clientes
+      summary: Buscar cliente por ID
+      parameters:
+        - $ref: '#/components/parameters/IdParam'
+      responses:
+        '200':
+          description: Cliente encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClienteResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      tags:
+        - Clientes
+      summary: Atualizar cliente
+      parameters:
+        - $ref: '#/components/parameters/IdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateClienteRequest'
+      responses:
+        '200':
+          description: Cliente atualizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClienteResponse'
+
+    delete:
+      tags:
+        - Clientes
+      summary: Deletar cliente
+      parameters:
+        - $ref: '#/components/parameters/IdParam'
+      responses:
+        '204':
+          description: Cliente deletado
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # ==================== RESTAURANTES ====================
+  /restaurantes:
+    get:
+      tags:
+        - Restaurantes
+      summary: Listar todos os restaurantes
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [ATIVO, INATIVO, FECHADO]
+        - name: categoria
+          in: query
+          schema:
+            $ref: '#/components/schemas/CategoriaRestaurante'
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lista de restaurantes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestauranteListResponse'
+
+    post:
+      tags:
+        - Restaurantes
+      summary: Criar novo restaurante
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRestauranteRequest'
+      responses:
+        '201':
+          description: Restaurante criado com sucesso
+
+  /restaurantes/{id}:
+    get:
+      tags:
+        - Restaurantes
+      summary: Buscar restaurante por ID
+      parameters:
+        - $ref: '#/components/parameters/IdParam'
+      responses:
+        '200':
+          description: Restaurante encontrado
+
+    put:
+      tags:
+        - Restaurantes
+      summary: Atualizar restaurante
+      parameters:
+        - $ref: '#/components/parameters/IdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRestauranteRequest'
+      responses:
+        '200':
+          description: Restaurante atualizado
+
+    delete:
+      tags:
+        - Restaurantes
+      summary: Deletar restaurante
+      parameters:
+        - $ref: '#/components/parameters/IdParam'
+      responses:
+        '204':
+          description: Restaurante deletado
+
+  /restaurantes/categoria/{categoria}:
+    get:
+      tags:
+        - Restaurantes
+      summary: Listar restaurantes por categoria
+      parameters:
+        - name: categoria
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/CategoriaRestaurante'
+      responses:
+        '200':
+          description: Lista de restaurantes
+
+  # ==================== CARDÁPIOS ====================
+  /cardapios:
+    get:
+      tags:
+        - Cardápios
+      summary: Listar todos os cardápios
+      parameters:
+        - name: restauranteId
+          in: query
+          schema:
+            type: string
+        - name: categoria
+          in: query
+          schema:
+            $ref: '#/components/schemas/CategoriaCardapio'
+        - name: disponivel
+          in: query
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Lista de cardápios
+
+    post:
+      tags:
+        - Cardápios
+      summary: Criar novo item do cardápio
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCardapioRequest'
+      responses:
+        '201':
+          description: Item criado com sucesso
+
+  /cardapios/restaurante/{restauranteId}:
+    get:
+      tags:
+        - Cardápios
+      summary: Listar cardápio de um restaurante
+      parameters:
+        - name: restauranteId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Cardápio do restaurante
+
+  /cardapios/{id}:
+    get:
+      tags:
+        - Cardápios
+      summary: Buscar item do cardápio por ID
+      parameters:
+        - $ref: '#/components/parameters/IdParam'
+      responses:
+        '200':
+          description: Item encontrado
+
+    put:
+      tags:
+        - Cardápios
+      summary: Atualizar item do cardápio
+      parameters:
+        - $ref: '#/components/parameters/IdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCardapioRequest'
+      responses:
+        '200':
+          description: Item atualizado
+
+    delete:
+      tags:
+        - Cardápios
+      summary: Deletar item do cardápio
+      parameters:
+        - $ref: '#/components/parameters/IdParam'
+      responses:
+        '204':
+          description: Item deletado
+
+  /cardapios/{id}/disponibilidade:
+    patch:
+      tags:
+        - Cardápios
+      summary: Alternar disponibilidade do item
+      parameters:
+        - $ref: '#/components/parameters/IdParam'
+      responses:
+        '200':
+          description: Disponibilidade alternada
+
+  # ==================== PEDIDOS ====================
+  /pedidos:
+    get:
+      tags:
+        - Pedidos
+      summary: Listar todos os pedidos
+      parameters:
+        - name: clienteId
+          in: query
+          schema:
+            type: string
+        - name: restauranteId
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            $ref: '#/components/schemas/StatusPedido'
+      responses:
+        '200':
+          description: Lista de pedidos
+
+    post:
+      tags:
+        - Pedidos
+      summary: Criar novo pedido
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePedidoRequest'
+      responses:
+        '201':
+          description: Pedido criado com sucesso
+
+  /pedidos/dashboard:
+    get:
+      tags:
+        - Pedidos
+      summary: Obter estatísticas do dashboard
+      responses:
+        '200':
+          description: Estatísticas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardStats'
+
+  /pedidos/{id}:
+    get:
+      tags:
+        - Pedidos
+      summary: Buscar pedido por ID
+      parameters:
+        - $ref: '#/components/parameters/IdParam'
+      responses:
+        '200':
+          description: Pedido encontrado
+
+  /pedidos/{id}/status:
+    patch:
+      tags:
+        - Pedidos
+      summary: Atualizar status do pedido
+      parameters:
+        - $ref: '#/components/parameters/IdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - status
+              properties:
+                status:
+                  $ref: '#/components/schemas/StatusPedido'
+      responses:
+        '200':
+          description: Status atualizado
+
+  /pedidos/{id}/cancelar:
+    patch:
+      tags:
+        - Pedidos
+      summary: Cancelar pedido
+      parameters:
+        - $ref: '#/components/parameters/IdParam'
+      responses:
+        '200':
+          description: Pedido cancelado
+
+  # ==================== AVALIAÇÕES ====================
+  /avaliacoes:
+    get:
+      tags:
+        - Avaliações
+      summary: Listar todas as avaliações
+      parameters:
+        - name: clienteId
+          in: query
+          schema:
+            type: string
+        - name: restauranteId
+          in: query
+          schema:
+            type: string
+        - name: nota
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 5
+      responses:
+        '200':
+          description: Lista de avaliações
+
+    post:
+      tags:
+        - Avaliações
+      summary: Criar nova avaliação
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAvaliacaoRequest'
+      responses:
+        '201':
+          description: Avaliação criada com sucesso
+
+  /avaliacoes/restaurante/{restauranteId}/media:
+    get:
+      tags:
+        - Avaliações
+      summary: Obter média de avaliações de um restaurante
+      parameters:
+        - name: restauranteId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Média calculada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaAvaliacaoResponse'
+
+  /avaliacoes/{id}:
+    get:
+      tags:
+        - Avaliações
+      summary: Buscar avaliação por ID
+      parameters:
+        - $ref: '#/components/parameters/IdParam'
+      responses:
+        '200':
+          description: Avaliação encontrada
+
+    put:
+      tags:
+        - Avaliações
+      summary: Atualizar avaliação
+      parameters:
+        - $ref: '#/components/parameters/IdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAvaliacaoRequest'
+      responses:
+        '200':
+          description: Avaliação atualizada
+
+    delete:
+      tags:
+        - Avaliações
+      summary: Deletar avaliação
+      parameters:
+        - $ref: '#/components/parameters/IdParam'
+      responses:
+        '204':
+          description: Avaliação deletada
+
+  # ==================== PAGAMENTOS ====================
+  /pagamentos:
+    get:
+      tags:
+        - Pagamentos
+      summary: Listar todos os pagamentos
+      parameters:
+        - name: status
+          in: query
+          schema:
+            $ref: '#/components/schemas/StatusPagamento'
+        - name: metodo
+          in: query
+          schema:
+            $ref: '#/components/schemas/MetodoPagamento'
+      responses:
+        '200':
+          description: Lista de pagamentos
+
+    post:
+      tags:
+        - Pagamentos
+      summary: Criar novo pagamento
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePagamentoRequest'
+      responses:
+        '201':
+          description: Pagamento criado com sucesso
+
+  /pagamentos/pedido/{pedidoId}:
+    get:
+      tags:
+        - Pagamentos
+      summary: Buscar pagamento por pedido
+      parameters:
+        - name: pedidoId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Pagamento encontrado
+
+  /pagamentos/{id}:
+    get:
+      tags:
+        - Pagamentos
+      summary: Buscar pagamento por ID
+      parameters:
+        - $ref: '#/components/parameters/IdParam'
+      responses:
+        '200':
+          description: Pagamento encontrado
+
+  /pagamentos/{id}/status:
+    patch:
+      tags:
+        - Pagamentos
+      summary: Atualizar status do pagamento
+      parameters:
+        - $ref: '#/components/parameters/IdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - status
+              properties:
+                status:
+                  $ref: '#/components/schemas/StatusPagamento'
+      responses:
+        '200':
+          description: Status atualizado
+
+  /pagamentos/{id}/processar:
+    patch:
+      tags:
+        - Pagamentos
+      summary: Processar pagamento
+      parameters:
+        - $ref: '#/components/parameters/IdParam'
+      responses:
+        '200':
+          description: Pagamento em processamento
+
+  /pagamentos/{id}/cancelar:
+    patch:
+      tags:
+        - Pagamentos
+      summary: Cancelar pagamento
+      parameters:
+        - $ref: '#/components/parameters/IdParam'
+      responses:
+        '200':
+          description: Pagamento cancelado
+
+# ==================== COMPONENTS ====================
+components:
+  parameters:
+    IdParam:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: '^[0-9a-fA-F]{24}$'
+      description: ID do recurso (MongoDB ObjectId)
+
+  schemas:
+    # Enums
+    CategoriaRestaurante:
+      type: string
+      enum:
+        - BRASILEIRA
+        - ITALIANA
+        - JAPONESA
+        - LANCHES
+        - PIZZARIA
+        - SOBREMESAS
+        - OUTROS
+
+    CategoriaCardapio:
+      type: string
+      enum:
+        - ENTRADA
+        - PRATO_PRINCIPAL
+        - SOBREMESA
+        - BEBIDA
+        - LANCHE
+        - OUTROS
+
+    StatusPedido:
+      type: string
+      enum:
+        - PENDENTE
+        - CONFIRMADO
+        - PREPARANDO
+        - PRONTO
+        - EM_ENTREGA
+        - ENTREGUE
+        - CANCELADO
+
+    StatusPagamento:
+      type: string
+      enum:
+        - PENDENTE
+        - PROCESSANDO
+        - APROVADO
+        - RECUSADO
+        - CANCELADO
+
+    MetodoPagamento:
+      type: string
+      enum:
+        - DINHEIRO
+        - CARTAO_CREDITO
+        - CARTAO_DEBITO
+        - PIX
+        - VALE_REFEICAO
+
+    # Endereco
+    Endereco:
+      type: object
+      required:
+        - rua
+        - numero
+        - bairro
+        - cidade
+        - estado
+        - cep
+      properties:
+        rua:
+          type: string
+          example: "Av. Paulista"
+        numero:
+          type: string
+          example: "1000"
+        complemento:
+          type: string
+          example: "Apto 101"
+        bairro:
+          type: string
+          example: "Bela Vista"
+        cidade:
+          type: string
+          example: "São Paulo"
+        estado:
+          type: string
+          example: "SP"
+        cep:
+          type: string
+          example: "01310000"
+
+    # Cliente
+    CreateClienteRequest:
+      type: object
+      required:
+        - nome
+        - email
+        - telefone
+        - cpf
+        - endereco
+      properties:
+        nome:
+          type: string
+          example: "João Silva"
+        email:
+          type: string
+          format: email
+          example: "joao@example.com"
+        telefone:
+          type: string
+          example: "11987654321"
+        cpf:
+          type: string
+          pattern: '^\d{11}$'
+          example: "12345678901"
+        endereco:
+          $ref: '#/components/schemas/Endereco'
+        dataNascimento:
+          type: string
+          format: date
+          example: "1990-01-15"
+
+    UpdateClienteRequest:
+      type: object
+      properties:
+        nome:
+          type: string
+        email:
+          type: string
+        telefone:
+          type: string
+        status:
+          type: string
+          enum: [ATIVO, INATIVO, BLOQUEADO]
+
+    ClienteResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: object
+          properties:
+            _id:
+              type: string
+              example: "507f1f77bcf86cd799439011"
+            nome:
+              type: string
+            email:
+              type: string
+            cpf:
+              type: string
+            status:
+              type: string
+            createdAt:
+              type: string
+              format: date-time
+            updatedAt:
+              type: string
+              format: date-time
+
+    ClienteListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            type: object
+        total:
+          type: integer
+
+    # Restaurante
+    CreateRestauranteRequest:
+      type: object
+      required:
+        - nome
+        - cnpj
+        - email
+        - telefone
+        - categoria
+        - horarioFuncionamento
+        - endereco
+      properties:
+        nome:
+          type: string
+          example: "Pizzaria Bella Napoli"
+        cnpj:
+          type: string
+          pattern: '^\d{14}$'
+          example: "12345678000190"
+        email:
+          type: string
+          format: email
+        telefone:
+          type: string
+        categoria:
+          $ref: '#/components/schemas/CategoriaRestaurante'
+        horarioFuncionamento:
+          type: object
+          required:
+            - abertura
+            - fechamento
+          properties:
+            abertura:
+              type: string
+              example: "11:00"
+            fechamento:
+              type: string
+              example: "23:00"
+        endereco:
+          $ref: '#/components/schemas/Endereco'
+
+    UpdateRestauranteRequest:
+      type: object
+      properties:
+        nome:
+          type: string
+        email:
+          type: string
+        telefone:
+          type: string
+        status:
+          type: string
+          enum: [ATIVO, INATIVO, FECHADO]
+
+    RestauranteListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            type: object
+        total:
+          type: integer
+
+    # Cardapio
+    CreateCardapioRequest:
+      type: object
+      required:
+        - restauranteId
+        - nome
+        - descricao
+        - preco
+        - categoria
+      properties:
+        restauranteId:
+          type: string
+        nome:
+          type: string
+          example: "Pizza Margherita"
+        descricao:
+          type: string
+          example: "Molho de tomate, mussarela e manjericão"
+        preco:
+          type: number
+          format: float
+          example: 45.90
+        categoria:
+          $ref: '#/components/schemas/CategoriaCardapio'
+        imagemUrl:
+          type: string
+          format: uri
+        tempoPreparoMinutos:
+          type: integer
+          example: 30
+
+    UpdateCardapioRequest:
+      type: object
+      properties:
+        nome:
+          type: string
+        descricao:
+          type: string
+        preco:
+          type: number
+        disponivel:
+          type: boolean
+
+    # Pedido
+    CreatePedidoRequest:
+      type: object
+      required:
+        - clienteId
+        - restauranteId
+        - items
+      properties:
+        clienteId:
+          type: string
+        restauranteId:
+          type: string
+        items:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - cardapioId
+              - quantidade
+            properties:
+              cardapioId:
+                type: string
+              quantidade:
+                type: integer
+                minimum: 1
+        taxaEntrega:
+          type: number
+          example: 5.00
+        enderecoEntrega:
+          $ref: '#/components/schemas/Endereco'
+        observacoes:
+          type: string
+
+    DashboardStats:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: object
+          properties:
+            totalPendentes:
+              type: integer
+            totalConfirmados:
+              type: integer
+            totalEntregues:
+              type: integer
+            totalVendas:
+              type: number
+
+    # Avaliacao
+    CreateAvaliacaoRequest:
+      type: object
+      required:
+        - pedidoId
+        - clienteId
+        - restauranteId
+        - nota
+      properties:
+        pedidoId:
+          type: string
+        clienteId:
+          type: string
+        restauranteId:
+          type: string
+        nota:
+          type: integer
+          minimum: 1
+          maximum: 5
+          example: 5
+        comentario:
+          type: string
+          maxLength: 500
+          example: "Excelente comida e atendimento!"
+
+    UpdateAvaliacaoRequest:
+      type: object
+      properties:
+        nota:
+          type: integer
+          minimum: 1
+          maximum: 5
+        comentario:
+          type: string
+
+    MediaAvaliacaoResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: object
+          properties:
+            restauranteId:
+              type: string
+            restauranteNome:
+              type: string
+            mediaNotas:
+              type: string
+              example: "4.5"
+            totalAvaliacoes:
+              type: integer
+
+    # Pagamento
+    CreatePagamentoRequest:
+      type: object
+      required:
+        - pedidoId
+        - valor
+        - metodo
+      properties:
+        pedidoId:
+          type: string
+        valor:
+          type: number
+          example: 52.90
+        metodo:
+          $ref: '#/components/schemas/MetodoPagamento'
+        observacoes:
+          type: string
+
+  responses:
+    BadRequest:
+      description: Requisição inválida
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              errors:
+                type: array
+                items:
+                  type: object
+
+    NotFound:
+      description: Recurso não encontrado
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              error:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  statusCode:
+                    type: integer
+                    example: 404
+
+    Conflict:
+      description: Conflito - recurso já existe
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              error:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  statusCode:
+                    type: integer
+                    example: 409

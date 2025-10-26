@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  # Orders Service (MongoDB)
+  orders-service:
+    build: .
+    container_name: orders-service
+    restart: unless-stopped
+    ports:
+      - "3002:3002"
+    environment:
+      - NODE_ENV=production
+      - PORT=3002
+      - MONGODB_URI=${MONGODB_URI}
+      - LOG_LEVEL=info
+      - DELIVERY_SERVICE_URL=http://delivery-service:3001
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - erp-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3002/api/v1/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    depends_on:
+      - mongodb
+
+  # MongoDB Local (opcional - para desenvolvimento)
+  mongodb:
+    image: mongo:7
+    container_name: mongodb-local
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin123
+      - MONGO_INITDB_DATABASE=OrdersDB
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - erp-network
+
+  # Delivery Service (SQL Server) - Se quiser rodar junto
+  delivery-service:
+    image: delivery-service:latest
+    container_name: delivery-service
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - DB_SERVER=${DB_SERVER}
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - LOG_LEVEL=info
+    networks:
+      - erp-network
+    profiles:
+      - full-stack
+
+volumes:
+  mongodb-data:
+
+networks:
+  erp-network:
+    driver: bridge

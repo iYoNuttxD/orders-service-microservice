@@ -1,0 +1,538 @@
+{"level":"info","message":"::1 - - [26/Oct/2025:20:37:38 +0000] \"GET /api/v1/health HTTP/1.1\" 200 126 \"-\" \"curl/8.14.1\"","service":"orders-service","timestamp":"2025-10-26 17:37:38"}
+{"filters":{},"level":"info","message":"Buscando todos os clientes","service":"orders-service","timestamp":"2025-10-26 17:37:41"}
+{"level":"info","message":"::1 - - [26/Oct/2025:20:37:41 +0000] \"GET /api/v1/clientes HTTP/1.1\" 200 36 \"-\" \"curl/8.14.1\"","service":"orders-service","timestamp":"2025-10-26 17:37:41"}
+{"filters":{},"level":"info","message":"Buscando todos os restaurantes","service":"orders-service","timestamp":"2025-10-26 17:37:43"}
+{"level":"info","message":"::1 - - [26/Oct/2025:20:37:43 +0000] \"GET /api/v1/restaurantes HTTP/1.1\" 200 36 \"-\" \"curl/8.14.1\"","service":"orders-service","timestamp":"2025-10-26 17:37:43"}
+{"filters":{},"level":"info","message":"Buscando todos os cardápios","service":"orders-service","timestamp":"2025-10-26 17:37:46"}
+{"level":"info","message":"::1 - - [26/Oct/2025:20:37:47 +0000] \"GET /api/v1/cardapios HTTP/1.1\" 200 36 \"-\" \"curl/8.14.1\"","service":"orders-service","timestamp":"2025-10-26 17:37:47"}
+{"filters":{},"level":"info","message":"Buscando todos os pedidos","service":"orders-service","timestamp":"2025-10-26 17:37:49"}
+{"level":"info","message":"::1 - - [26/Oct/2025:20:37:49 +0000] \"GET /api/v1/pedidos HTTP/1.1\" 200 36 \"-\" \"curl/8.14.1\"","service":"orders-service","timestamp":"2025-10-26 17:37:49"}
+{"filters":{},"level":"info","message":"Buscando todas as avaliações","service":"orders-service","timestamp":"2025-10-26 17:37:51"}
+{"level":"info","message":"::1 - - [26/Oct/2025:20:37:51 +0000] \"GET /api/v1/avaliacoes HTTP/1.1\" 200 36 \"-\" \"curl/8.14.1\"","service":"orders-service","timestamp":"2025-10-26 17:37:51"}
+{"filters":{},"level":"info","message":"Buscando todos os pagamentos","service":"orders-service","timestamp":"2025-10-26 17:37:54"}
+{"level":"info","message":"::1 - - [26/Oct/2025:20:37:54 +0000] \"GET /api/v1/pagamentos HTTP/1.1\" 200 36 \"-\" \"curl/8.14.1\"","service":"orders-service","timestamp":"2025-10-26 17:37:54"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"email":"joao@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"id":"pedido123","level":"info","message":"Pedido criado com sucesso","numero":"PED000001","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"error":"Cliente não encontrado","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"error":"Restaurante não está ativo","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"error":"Item não disponível: Pizza","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"id":"pedido123","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:46:39"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"id":"pedido123","level":"info","message":"Status do pedido atualizado com sucesso","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:46:39"}
+{"id":"pedido123","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:46:39"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"error":"Transição inválida de ENTREGUE para CONFIRMADO","id":"pedido123","level":"error","message":"Erro ao atualizar status do pedido","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"id":"pedido123","level":"info","message":"Cancelando pedido","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"id":"pedido123","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CANCELADO","timestamp":"2025-10-26 17:46:39"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"id":"pedido123","level":"info","message":"Status do pedido atualizado com sucesso","service":"orders-service","status":"CANCELADO","timestamp":"2025-10-26 17:46:39"}
+{"id":"pedido123","level":"info","message":"Cancelando pedido","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"error":"Pedido não pode ser cancelado","id":"pedido123","level":"error","message":"Erro ao cancelar pedido","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Cliente criado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"email":"joao@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"error":"Email já cadastrado","level":"error","message":"Erro ao criar cliente","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"email":"joao@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"error":"CPF já cadastrado","level":"error","message":"Erro ao criar cliente","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"error":"Cliente não encontrado","id":"507f1f77bcf86cd799439011","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Atualizando cliente","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Cliente atualizado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Deletando cliente","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Cliente deletado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:46:39"}
+{"email":"test@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"id":"68fe89dfa96ed71a43c60728","level":"info","message":"Cliente criado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:51:43 +0000] \"POST /api/v1/clientes HTTP/1.1\" 201 484 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"email":"test@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"id":"68fe89dfa96ed71a43c60733","level":"info","message":"Cliente criado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:51:43 +0000] \"POST /api/v1/clientes HTTP/1.1\" 201 442 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:51:43 +0000] \"POST /api/v1/clientes HTTP/1.1\" 400 651 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"filters":{},"level":"info","message":"Buscando todos os clientes","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:51:43 +0000] \"GET /api/v1/clientes HTTP/1.1\" 200 36 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"filters":{"status":"ATIVO"},"level":"info","message":"Buscando todos os clientes","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:51:43 +0000] \"GET /api/v1/clientes?status=ATIVO HTTP/1.1\" 200 36 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"filters":{"search":"Test"},"level":"info","message":"Buscando todos os clientes","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:51:43 +0000] \"GET /api/v1/clientes?search=Test HTTP/1.1\" 200 36 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"id":"68fe89dfa96ed71a43c60728","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"error":"Cliente não encontrado","id":"68fe89dfa96ed71a43c60728","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"level":"error","message":"Cliente não encontrado","method":"GET","service":"orders-service","stack":"Error: Cliente não encontrado\n    at ClienteService.getClienteById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:22:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at getById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:22:23)","timestamp":"2025-10-26 17:51:43","url":"/api/v1/clientes/68fe89dfa96ed71a43c60728"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:51:43 +0000] \"GET /api/v1/clientes/68fe89dfa96ed71a43c60728 HTTP/1.1\" 404 80 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"id":"68fe89dfa96ed71a43c6075d","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"error":"Cliente não encontrado","id":"68fe89dfa96ed71a43c6075d","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"level":"error","message":"Cliente não encontrado","method":"GET","service":"orders-service","stack":"Error: Cliente não encontrado\n    at ClienteService.getClienteById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:22:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at getById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:22:23)","timestamp":"2025-10-26 17:51:43","url":"/api/v1/clientes/68fe89dfa96ed71a43c6075d"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:51:43 +0000] \"GET /api/v1/clientes/68fe89dfa96ed71a43c6075d HTTP/1.1\" 404 80 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:51:43 +0000] \"GET /api/v1/clientes/invalid-id HTTP/1.1\" 400 89 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"id":"68fe89dfa96ed71a43c60728","level":"info","message":"Atualizando cliente","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"id":"68fe89dfa96ed71a43c60728","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"error":"Cliente não encontrado","id":"68fe89dfa96ed71a43c60728","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"error":"Cliente não encontrado","id":"68fe89dfa96ed71a43c60728","level":"error","message":"Erro ao atualizar cliente","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"level":"error","message":"Cliente não encontrado","method":"PUT","service":"orders-service","stack":"Error: Cliente não encontrado\n    at ClienteService.getClienteById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:22:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at ClienteService.updateCliente (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:69:7)\n    at update (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:50:23)","timestamp":"2025-10-26 17:51:43","url":"/api/v1/clientes/68fe89dfa96ed71a43c60728"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:51:43 +0000] \"PUT /api/v1/clientes/68fe89dfa96ed71a43c60728 HTTP/1.1\" 404 80 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"id":"68fe89dfa96ed71a43c60728","level":"info","message":"Atualizando cliente","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"id":"68fe89dfa96ed71a43c60728","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"error":"Cliente não encontrado","id":"68fe89dfa96ed71a43c60728","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"error":"Cliente não encontrado","id":"68fe89dfa96ed71a43c60728","level":"error","message":"Erro ao atualizar cliente","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"level":"error","message":"Cliente não encontrado","method":"PUT","service":"orders-service","stack":"Error: Cliente não encontrado\n    at ClienteService.getClienteById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:22:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at ClienteService.updateCliente (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:69:7)\n    at update (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:50:23)","timestamp":"2025-10-26 17:51:43","url":"/api/v1/clientes/68fe89dfa96ed71a43c60728"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:51:43 +0000] \"PUT /api/v1/clientes/68fe89dfa96ed71a43c60728 HTTP/1.1\" 404 80 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"id":"68fe89dfa96ed71a43c60728","level":"info","message":"Deletando cliente","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"id":"68fe89dfa96ed71a43c60728","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"error":"Cliente não encontrado","id":"68fe89dfa96ed71a43c60728","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"error":"Cliente não encontrado","id":"68fe89dfa96ed71a43c60728","level":"error","message":"Erro ao deletar cliente","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"level":"error","message":"Cliente não encontrado","method":"DELETE","service":"orders-service","stack":"Error: Cliente não encontrado\n    at ClienteService.getClienteById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:22:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at ClienteService.deleteCliente (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:96:7)\n    at delete (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:65:7)","timestamp":"2025-10-26 17:51:43","url":"/api/v1/clientes/68fe89dfa96ed71a43c60728"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:51:43 +0000] \"DELETE /api/v1/clientes/68fe89dfa96ed71a43c60728 HTTP/1.1\" 404 80 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"id":"68fe89dfa96ed71a43c60782","level":"info","message":"Deletando cliente","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"id":"68fe89dfa96ed71a43c60782","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"error":"Cliente não encontrado","id":"68fe89dfa96ed71a43c60782","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"error":"Cliente não encontrado","id":"68fe89dfa96ed71a43c60782","level":"error","message":"Erro ao deletar cliente","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"level":"error","message":"Cliente não encontrado","method":"DELETE","service":"orders-service","stack":"Error: Cliente não encontrado\n    at ClienteService.getClienteById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:22:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at ClienteService.deleteCliente (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:96:7)\n    at delete (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:65:7)","timestamp":"2025-10-26 17:51:43","url":"/api/v1/clientes/68fe89dfa96ed71a43c60782"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:51:43 +0000] \"DELETE /api/v1/clientes/68fe89dfa96ed71a43c60782 HTTP/1.1\" 404 80 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:51:43"}
+{"clienteId":"68fe89e19c862dd57623d525","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:51:45"}
+{"error":"Pedido validation failed: numero: Path `numero` is required.","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:51:45"}
+{"level":"error","message":"Pedido validation failed: numero: Path `numero` is required.","method":"POST","service":"orders-service","stack":"ValidationError: Pedido validation failed: numero: Path `numero` is required.\n    at model.Object.<anonymous>.Document.invalidate (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\node_modules\\mongoose\\lib\\document.js:3362:32)\n    at C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\node_modules\\mongoose\\lib\\document.js:3123:17\n    at C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\node_modules\\mongoose\\lib\\schemaType.js:1420:9\n    at processTicksAndRejections (node:internal/process/task_queues:85:11)","timestamp":"2025-10-26 17:51:45","url":"/api/v1/pedidos"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:51:45 +0000] \"POST /api/v1/pedidos HTTP/1.1\" 400 128 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:51:45"}
+{"clienteId":"68fe89e19c862dd57623d53e","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:51:45"}
+{"error":"Item não disponível: Prato Teste","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:51:45"}
+{"level":"error","message":"Item não disponível: Prato Teste","method":"POST","service":"orders-service","stack":"Error: Item não disponível: Prato Teste\n    at PedidoService.createPedido (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\PedidoService.js:77:25)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at create (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\PedidoController.js:41:22)","timestamp":"2025-10-26 17:51:45","url":"/api/v1/pedidos"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:51:45 +0000] \"POST /api/v1/pedidos HTTP/1.1\" 400 91 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:51:45"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:51:45 +0000] \"POST /api/v1/pedidos HTTP/1.1\" 400 103 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:51:45"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:51:45 +0000] \"GET /api/v1/pedidos/dashboard HTTP/1.1\" 200 100 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:51:45"}
+{"email":"joao@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:51:47"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Cliente criado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:51:47"}
+{"email":"joao@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:51:47"}
+{"error":"Email já cadastrado","level":"error","message":"Erro ao criar cliente","service":"orders-service","timestamp":"2025-10-26 17:51:47"}
+{"email":"joao@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:51:47"}
+{"error":"CPF já cadastrado","level":"error","message":"Erro ao criar cliente","service":"orders-service","timestamp":"2025-10-26 17:51:47"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:51:47"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:51:47"}
+{"error":"Cliente não encontrado","id":"507f1f77bcf86cd799439011","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:51:47"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Atualizando cliente","service":"orders-service","timestamp":"2025-10-26 17:51:47"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:51:47"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Cliente atualizado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:51:47"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Deletando cliente","service":"orders-service","timestamp":"2025-10-26 17:51:47"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:51:47"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Cliente deletado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:51:47"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:51:48"}
+{"id":"pedido123","level":"info","message":"Pedido criado com sucesso","numero":"PED000001","service":"orders-service","timestamp":"2025-10-26 17:51:48"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:51:48"}
+{"error":"Cliente não encontrado","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:51:48"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:51:48"}
+{"error":"Restaurante não está ativo","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:51:48"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:51:48"}
+{"error":"Item não disponível: Pizza","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:51:48"}
+{"id":"pedido123","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:51:48"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:51:48"}
+{"id":"pedido123","level":"info","message":"Status do pedido atualizado com sucesso","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:51:48"}
+{"id":"pedido123","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:51:48"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:51:48"}
+{"error":"Transição inválida de ENTREGUE para CONFIRMADO","id":"pedido123","level":"error","message":"Erro ao atualizar status do pedido","service":"orders-service","timestamp":"2025-10-26 17:51:48"}
+{"id":"pedido123","level":"info","message":"Cancelando pedido","service":"orders-service","timestamp":"2025-10-26 17:51:48"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:51:48"}
+{"id":"pedido123","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CANCELADO","timestamp":"2025-10-26 17:51:48"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:51:48"}
+{"id":"pedido123","level":"info","message":"Status do pedido atualizado com sucesso","service":"orders-service","status":"CANCELADO","timestamp":"2025-10-26 17:51:48"}
+{"id":"pedido123","level":"info","message":"Cancelando pedido","service":"orders-service","timestamp":"2025-10-26 17:51:48"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:51:48"}
+{"error":"Pedido não pode ser cancelado","id":"pedido123","level":"error","message":"Erro ao cancelar pedido","service":"orders-service","timestamp":"2025-10-26 17:51:48"}
+{"email":"test@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"id":"68fe8a4cc283f39a6a31ab70","level":"info","message":"Cliente criado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:53:32 +0000] \"POST /api/v1/clientes HTTP/1.1\" 201 484 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"email":"test@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"id":"68fe8a4cc283f39a6a31ab7b","level":"info","message":"Cliente criado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:53:32 +0000] \"POST /api/v1/clientes HTTP/1.1\" 201 442 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:53:32 +0000] \"POST /api/v1/clientes HTTP/1.1\" 400 651 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"filters":{},"level":"info","message":"Buscando todos os clientes","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:53:32 +0000] \"GET /api/v1/clientes HTTP/1.1\" 200 36 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"filters":{"status":"ATIVO"},"level":"info","message":"Buscando todos os clientes","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:53:32 +0000] \"GET /api/v1/clientes?status=ATIVO HTTP/1.1\" 200 36 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"filters":{"search":"Test"},"level":"info","message":"Buscando todos os clientes","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:53:32 +0000] \"GET /api/v1/clientes?search=Test HTTP/1.1\" 200 36 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"id":"68fe8a4cc283f39a6a31ab70","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"error":"Cliente não encontrado","id":"68fe8a4cc283f39a6a31ab70","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"level":"error","message":"Cliente não encontrado","method":"GET","service":"orders-service","stack":"Error: Cliente não encontrado\n    at ClienteService.getClienteById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:22:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at getById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:22:23)","timestamp":"2025-10-26 17:53:32","url":"/api/v1/clientes/68fe8a4cc283f39a6a31ab70"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:53:32 +0000] \"GET /api/v1/clientes/68fe8a4cc283f39a6a31ab70 HTTP/1.1\" 404 80 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"id":"68fe8a4cc283f39a6a31aba5","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"error":"Cliente não encontrado","id":"68fe8a4cc283f39a6a31aba5","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"level":"error","message":"Cliente não encontrado","method":"GET","service":"orders-service","stack":"Error: Cliente não encontrado\n    at ClienteService.getClienteById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:22:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at getById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:22:23)","timestamp":"2025-10-26 17:53:32","url":"/api/v1/clientes/68fe8a4cc283f39a6a31aba5"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:53:32 +0000] \"GET /api/v1/clientes/68fe8a4cc283f39a6a31aba5 HTTP/1.1\" 404 80 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:53:32 +0000] \"GET /api/v1/clientes/invalid-id HTTP/1.1\" 400 89 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"id":"68fe8a4cc283f39a6a31ab70","level":"info","message":"Atualizando cliente","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"id":"68fe8a4cc283f39a6a31ab70","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"error":"Cliente não encontrado","id":"68fe8a4cc283f39a6a31ab70","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"error":"Cliente não encontrado","id":"68fe8a4cc283f39a6a31ab70","level":"error","message":"Erro ao atualizar cliente","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"level":"error","message":"Cliente não encontrado","method":"PUT","service":"orders-service","stack":"Error: Cliente não encontrado\n    at ClienteService.getClienteById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:22:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at ClienteService.updateCliente (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:69:7)\n    at update (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:50:23)","timestamp":"2025-10-26 17:53:32","url":"/api/v1/clientes/68fe8a4cc283f39a6a31ab70"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:53:32 +0000] \"PUT /api/v1/clientes/68fe8a4cc283f39a6a31ab70 HTTP/1.1\" 404 80 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:53:32"}
+{"id":"68fe8a4cc283f39a6a31ab70","level":"info","message":"Atualizando cliente","service":"orders-service","timestamp":"2025-10-26 17:53:33"}
+{"id":"68fe8a4cc283f39a6a31ab70","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:53:33"}
+{"error":"Cliente não encontrado","id":"68fe8a4cc283f39a6a31ab70","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:53:33"}
+{"error":"Cliente não encontrado","id":"68fe8a4cc283f39a6a31ab70","level":"error","message":"Erro ao atualizar cliente","service":"orders-service","timestamp":"2025-10-26 17:53:33"}
+{"level":"error","message":"Cliente não encontrado","method":"PUT","service":"orders-service","stack":"Error: Cliente não encontrado\n    at ClienteService.getClienteById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:22:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at ClienteService.updateCliente (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:69:7)\n    at update (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:50:23)","timestamp":"2025-10-26 17:53:33","url":"/api/v1/clientes/68fe8a4cc283f39a6a31ab70"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:53:33 +0000] \"PUT /api/v1/clientes/68fe8a4cc283f39a6a31ab70 HTTP/1.1\" 404 80 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:53:33"}
+{"id":"68fe8a4cc283f39a6a31ab70","level":"info","message":"Deletando cliente","service":"orders-service","timestamp":"2025-10-26 17:53:33"}
+{"id":"68fe8a4cc283f39a6a31ab70","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:53:33"}
+{"error":"Cliente não encontrado","id":"68fe8a4cc283f39a6a31ab70","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:53:33"}
+{"error":"Cliente não encontrado","id":"68fe8a4cc283f39a6a31ab70","level":"error","message":"Erro ao deletar cliente","service":"orders-service","timestamp":"2025-10-26 17:53:33"}
+{"level":"error","message":"Cliente não encontrado","method":"DELETE","service":"orders-service","stack":"Error: Cliente não encontrado\n    at ClienteService.getClienteById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:22:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at ClienteService.deleteCliente (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:96:7)\n    at delete (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:65:7)","timestamp":"2025-10-26 17:53:33","url":"/api/v1/clientes/68fe8a4cc283f39a6a31ab70"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:53:33 +0000] \"DELETE /api/v1/clientes/68fe8a4cc283f39a6a31ab70 HTTP/1.1\" 404 80 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:53:33"}
+{"id":"68fe8a4dc283f39a6a31abca","level":"info","message":"Deletando cliente","service":"orders-service","timestamp":"2025-10-26 17:53:33"}
+{"id":"68fe8a4dc283f39a6a31abca","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:53:33"}
+{"error":"Cliente não encontrado","id":"68fe8a4dc283f39a6a31abca","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:53:33"}
+{"error":"Cliente não encontrado","id":"68fe8a4dc283f39a6a31abca","level":"error","message":"Erro ao deletar cliente","service":"orders-service","timestamp":"2025-10-26 17:53:33"}
+{"level":"error","message":"Cliente não encontrado","method":"DELETE","service":"orders-service","stack":"Error: Cliente não encontrado\n    at ClienteService.getClienteById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:22:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at ClienteService.deleteCliente (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:96:7)\n    at delete (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:65:7)","timestamp":"2025-10-26 17:53:33","url":"/api/v1/clientes/68fe8a4dc283f39a6a31abca"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:53:33 +0000] \"DELETE /api/v1/clientes/68fe8a4dc283f39a6a31abca HTTP/1.1\" 404 80 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:53:33"}
+{"clienteId":"68fe8a4ec9ca3ad3772e5553","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:53:34"}
+{"error":"Pedido validation failed: numero: Path `numero` is required.","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:53:34"}
+{"level":"error","message":"Pedido validation failed: numero: Path `numero` is required.","method":"POST","service":"orders-service","stack":"ValidationError: Pedido validation failed: numero: Path `numero` is required.\n    at model.Object.<anonymous>.Document.invalidate (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\node_modules\\mongoose\\lib\\document.js:3362:32)\n    at C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\node_modules\\mongoose\\lib\\document.js:3123:17\n    at C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\node_modules\\mongoose\\lib\\schemaType.js:1420:9\n    at processTicksAndRejections (node:internal/process/task_queues:85:11)","timestamp":"2025-10-26 17:53:34","url":"/api/v1/pedidos"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:53:34 +0000] \"POST /api/v1/pedidos HTTP/1.1\" 400 128 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:53:34"}
+{"clienteId":"68fe8a4ec9ca3ad3772e556c","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:53:34"}
+{"error":"Item não disponível: Prato Teste","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:53:34"}
+{"level":"error","message":"Item não disponível: Prato Teste","method":"POST","service":"orders-service","stack":"Error: Item não disponível: Prato Teste\n    at PedidoService.createPedido (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\PedidoService.js:77:25)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at create (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\PedidoController.js:41:22)","timestamp":"2025-10-26 17:53:34","url":"/api/v1/pedidos"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:53:34 +0000] \"POST /api/v1/pedidos HTTP/1.1\" 400 91 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:53:34"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:53:34 +0000] \"POST /api/v1/pedidos HTTP/1.1\" 400 103 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:53:34"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:53:34 +0000] \"GET /api/v1/pedidos/dashboard HTTP/1.1\" 200 100 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:53:34"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:53:36"}
+{"id":"pedido123","level":"info","message":"Pedido criado com sucesso","numero":"PED000001","service":"orders-service","timestamp":"2025-10-26 17:53:36"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:53:36"}
+{"error":"Cliente não encontrado","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:53:36"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:53:36"}
+{"error":"Restaurante não está ativo","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:53:36"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:53:36"}
+{"error":"Item não disponível: Pizza","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:53:36"}
+{"id":"pedido123","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:53:36"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:53:36"}
+{"id":"pedido123","level":"info","message":"Status do pedido atualizado com sucesso","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:53:36"}
+{"id":"pedido123","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:53:36"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:53:36"}
+{"error":"Transição inválida de ENTREGUE para CONFIRMADO","id":"pedido123","level":"error","message":"Erro ao atualizar status do pedido","service":"orders-service","timestamp":"2025-10-26 17:53:36"}
+{"id":"pedido123","level":"info","message":"Cancelando pedido","service":"orders-service","timestamp":"2025-10-26 17:53:36"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:53:36"}
+{"id":"pedido123","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CANCELADO","timestamp":"2025-10-26 17:53:36"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:53:36"}
+{"id":"pedido123","level":"info","message":"Status do pedido atualizado com sucesso","service":"orders-service","status":"CANCELADO","timestamp":"2025-10-26 17:53:36"}
+{"id":"pedido123","level":"info","message":"Cancelando pedido","service":"orders-service","timestamp":"2025-10-26 17:53:36"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:53:36"}
+{"error":"Pedido não pode ser cancelado","id":"pedido123","level":"error","message":"Erro ao cancelar pedido","service":"orders-service","timestamp":"2025-10-26 17:53:36"}
+{"email":"joao@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:53:37"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Cliente criado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:53:37"}
+{"email":"joao@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:53:37"}
+{"error":"Email já cadastrado","level":"error","message":"Erro ao criar cliente","service":"orders-service","timestamp":"2025-10-26 17:53:37"}
+{"email":"joao@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:53:37"}
+{"error":"CPF já cadastrado","level":"error","message":"Erro ao criar cliente","service":"orders-service","timestamp":"2025-10-26 17:53:37"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:53:37"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:53:37"}
+{"error":"Cliente não encontrado","id":"507f1f77bcf86cd799439011","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:53:37"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Atualizando cliente","service":"orders-service","timestamp":"2025-10-26 17:53:37"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:53:37"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Cliente atualizado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:53:37"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Deletando cliente","service":"orders-service","timestamp":"2025-10-26 17:53:37"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:53:37"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Cliente deletado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:53:37"}
+{"email":"test@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:56:03"}
+{"id":"68fe8ae370a7d99441c43ba5","level":"info","message":"Cliente criado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:56:03"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:56:03 +0000] \"POST /api/v1/clientes HTTP/1.1\" 201 484 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:56:03"}
+{"email":"duplicate@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:56:03"}
+{"error":"Email já cadastrado","level":"error","message":"Erro ao criar cliente","service":"orders-service","timestamp":"2025-10-26 17:56:03"}
+{"level":"error","message":"Email já cadastrado","method":"POST","service":"orders-service","stack":"Error: Email já cadastrado\n    at ClienteService.createCliente (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:41:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at create (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:35:23)","timestamp":"2025-10-26 17:56:03","url":"/api/v1/clientes"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:56:03 +0000] \"POST /api/v1/clientes HTTP/1.1\" 409 77 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:56:03"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:56:03 +0000] \"POST /api/v1/clientes HTTP/1.1\" 400 651 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:56:03"}
+{"filters":{},"level":"info","message":"Buscando todos os clientes","service":"orders-service","timestamp":"2025-10-26 17:56:03"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:56:03 +0000] \"GET /api/v1/clientes HTTP/1.1\" 200 424 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:56:03"}
+{"filters":{"status":"ATIVO"},"level":"info","message":"Buscando todos os clientes","service":"orders-service","timestamp":"2025-10-26 17:56:03"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:56:03 +0000] \"GET /api/v1/clientes?status=ATIVO HTTP/1.1\" 200 424 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:56:03"}
+{"filters":{"search":"Test"},"level":"info","message":"Buscando todos os clientes","service":"orders-service","timestamp":"2025-10-26 17:56:03"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:56:03 +0000] \"GET /api/v1/clientes?search=Test HTTP/1.1\" 200 424 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:56:03"}
+{"id":"68fe8ae370a7d99441c43bd7","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:56:03"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:56:03 +0000] \"GET /api/v1/clientes/68fe8ae370a7d99441c43bd7 HTTP/1.1\" 200 410 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:56:03"}
+{"id":"68fe8ae470a7d99441c43be2","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:56:04"}
+{"error":"Cliente não encontrado","id":"68fe8ae470a7d99441c43be2","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:56:04"}
+{"level":"error","message":"Cliente não encontrado","method":"GET","service":"orders-service","stack":"Error: Cliente não encontrado\n    at ClienteService.getClienteById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:22:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at getById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:22:23)","timestamp":"2025-10-26 17:56:04","url":"/api/v1/clientes/68fe8ae470a7d99441c43be2"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:56:04 +0000] \"GET /api/v1/clientes/68fe8ae470a7d99441c43be2 HTTP/1.1\" 404 80 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:56:04"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:56:04 +0000] \"GET /api/v1/clientes/invalid-id HTTP/1.1\" 400 89 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:56:04"}
+{"id":"68fe8ae470a7d99441c43bf2","level":"info","message":"Atualizando cliente","service":"orders-service","timestamp":"2025-10-26 17:56:04"}
+{"id":"68fe8ae470a7d99441c43bf2","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:56:04"}
+{"id":"68fe8ae470a7d99441c43bf2","level":"info","message":"Cliente atualizado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:56:04"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:56:04 +0000] \"PUT /api/v1/clientes/68fe8ae470a7d99441c43bf2 HTTP/1.1\" 200 455 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:56:04"}
+{"id":"68fe8ae470a7d99441c43bfc","level":"info","message":"Atualizando cliente","service":"orders-service","timestamp":"2025-10-26 17:56:04"}
+{"id":"68fe8ae470a7d99441c43bfc","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:56:04"}
+{"error":"Email já cadastrado","id":"68fe8ae470a7d99441c43bfc","level":"error","message":"Erro ao atualizar cliente","service":"orders-service","timestamp":"2025-10-26 17:56:04"}
+{"level":"error","message":"Email já cadastrado","method":"PUT","service":"orders-service","stack":"Error: Email já cadastrado\n    at ClienteService.updateCliente (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:75:25)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at update (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:50:23)","timestamp":"2025-10-26 17:56:04","url":"/api/v1/clientes/68fe8ae470a7d99441c43bfc"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:56:04 +0000] \"PUT /api/v1/clientes/68fe8ae470a7d99441c43bfc HTTP/1.1\" 409 77 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:56:04"}
+{"id":"68fe8ae470a7d99441c43c08","level":"info","message":"Deletando cliente","service":"orders-service","timestamp":"2025-10-26 17:56:04"}
+{"id":"68fe8ae470a7d99441c43c08","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:56:04"}
+{"id":"68fe8ae470a7d99441c43c08","level":"info","message":"Cliente deletado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:56:04"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:56:04 +0000] \"DELETE /api/v1/clientes/68fe8ae470a7d99441c43c08 HTTP/1.1\" 204 - \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:56:04"}
+{"id":"68fe8ae470a7d99441c43c15","level":"info","message":"Deletando cliente","service":"orders-service","timestamp":"2025-10-26 17:56:04"}
+{"id":"68fe8ae470a7d99441c43c15","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:56:04"}
+{"error":"Cliente não encontrado","id":"68fe8ae470a7d99441c43c15","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:56:04"}
+{"error":"Cliente não encontrado","id":"68fe8ae470a7d99441c43c15","level":"error","message":"Erro ao deletar cliente","service":"orders-service","timestamp":"2025-10-26 17:56:04"}
+{"level":"error","message":"Cliente não encontrado","method":"DELETE","service":"orders-service","stack":"Error: Cliente não encontrado\n    at ClienteService.getClienteById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:22:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at ClienteService.deleteCliente (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:96:7)\n    at delete (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:65:7)","timestamp":"2025-10-26 17:56:04","url":"/api/v1/clientes/68fe8ae470a7d99441c43c15"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:56:04 +0000] \"DELETE /api/v1/clientes/68fe8ae470a7d99441c43c15 HTTP/1.1\" 404 80 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:56:04"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:56:07"}
+{"id":"pedido123","level":"info","message":"Pedido criado com sucesso","numero":"PED000001","service":"orders-service","timestamp":"2025-10-26 17:56:07"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:56:07"}
+{"error":"Cliente não encontrado","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:56:07"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:56:07"}
+{"error":"Restaurante não está ativo","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:56:07"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:56:07"}
+{"error":"Item não disponível: Pizza","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:56:07"}
+{"id":"pedido123","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:56:07"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:56:07"}
+{"id":"pedido123","level":"info","message":"Status do pedido atualizado com sucesso","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:56:07"}
+{"id":"pedido123","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:56:07"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:56:07"}
+{"error":"Transição inválida de ENTREGUE para CONFIRMADO","id":"pedido123","level":"error","message":"Erro ao atualizar status do pedido","service":"orders-service","timestamp":"2025-10-26 17:56:07"}
+{"id":"pedido123","level":"info","message":"Cancelando pedido","service":"orders-service","timestamp":"2025-10-26 17:56:07"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:56:07"}
+{"id":"pedido123","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CANCELADO","timestamp":"2025-10-26 17:56:07"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:56:07"}
+{"id":"pedido123","level":"info","message":"Status do pedido atualizado com sucesso","service":"orders-service","status":"CANCELADO","timestamp":"2025-10-26 17:56:07"}
+{"id":"pedido123","level":"info","message":"Cancelando pedido","service":"orders-service","timestamp":"2025-10-26 17:56:07"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:56:07"}
+{"error":"Pedido não pode ser cancelado","id":"pedido123","level":"error","message":"Erro ao cancelar pedido","service":"orders-service","timestamp":"2025-10-26 17:56:07"}
+{"email":"joao@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:56:08"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Cliente criado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:56:08"}
+{"email":"joao@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:56:08"}
+{"error":"Email já cadastrado","level":"error","message":"Erro ao criar cliente","service":"orders-service","timestamp":"2025-10-26 17:56:08"}
+{"email":"joao@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:56:08"}
+{"error":"CPF já cadastrado","level":"error","message":"Erro ao criar cliente","service":"orders-service","timestamp":"2025-10-26 17:56:08"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:56:08"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:56:08"}
+{"error":"Cliente não encontrado","id":"507f1f77bcf86cd799439011","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:56:08"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Atualizando cliente","service":"orders-service","timestamp":"2025-10-26 17:56:08"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:56:08"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Cliente atualizado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:56:08"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Deletando cliente","service":"orders-service","timestamp":"2025-10-26 17:56:08"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:56:08"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Cliente deletado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:56:08"}
+{"clienteId":"68fe8b420882515190e90605","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:57:38"}
+{"error":"Pedido validation failed: numero: Path `numero` is required.","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"level":"error","message":"Pedido validation failed: numero: Path `numero` is required.","method":"POST","service":"orders-service","stack":"ValidationError: Pedido validation failed: numero: Path `numero` is required.\n    at model.Object.<anonymous>.Document.invalidate (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\node_modules\\mongoose\\lib\\document.js:3362:32)\n    at C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\node_modules\\mongoose\\lib\\document.js:3123:17\n    at C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\node_modules\\mongoose\\lib\\schemaType.js:1420:9\n    at processTicksAndRejections (node:internal/process/task_queues:85:11)","timestamp":"2025-10-26 17:57:39","url":"/api/v1/pedidos"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:39 +0000] \"POST /api/v1/pedidos HTTP/1.1\" 400 128 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"clienteId":"68fe8b430882515190e9061e","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"error":"Item não disponível: Prato Teste","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"level":"error","message":"Item não disponível: Prato Teste","method":"POST","service":"orders-service","stack":"Error: Item não disponível: Prato Teste\n    at PedidoService.createPedido (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\PedidoService.js:77:25)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at create (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\PedidoController.js:41:22)","timestamp":"2025-10-26 17:57:39","url":"/api/v1/pedidos"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:39 +0000] \"POST /api/v1/pedidos HTTP/1.1\" 400 91 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:39 +0000] \"POST /api/v1/pedidos HTTP/1.1\" 400 103 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"filters":{},"level":"info","message":"Buscando todos os pedidos","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:39 +0000] \"GET /api/v1/pedidos HTTP/1.1\" 200 860 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"filters":{"clienteId":"68fe8b430882515190e9064f"},"level":"info","message":"Buscando todos os pedidos","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:39 +0000] \"GET /api/v1/pedidos?clienteId=68fe8b430882515190e9064f HTTP/1.1\" 200 860 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"filters":{"status":"PENDENTE"},"level":"info","message":"Buscando todos os pedidos","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:39 +0000] \"GET /api/v1/pedidos?status=PENDENTE HTTP/1.1\" 200 860 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:39 +0000] \"GET /api/v1/pedidos/dashboard HTTP/1.1\" 200 100 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"id":"68fe8b430882515190e9068c","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:57:39"}
+{"id":"68fe8b430882515190e9068c","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"id":"68fe8b430882515190e9068c","level":"info","message":"Status do pedido atualizado com sucesso","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:57:39"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:39 +0000] \"PATCH /api/v1/pedidos/68fe8b430882515190e9068c/status HTTP/1.1\" 200 699 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"id":"68fe8b430882515190e906a0","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:57:39"}
+{"id":"68fe8b430882515190e906a0","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"error":"Transição inválida de ENTREGUE para CONFIRMADO","id":"68fe8b430882515190e906a0","level":"error","message":"Erro ao atualizar status do pedido","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"level":"error","message":"Transição inválida de ENTREGUE para CONFIRMADO","method":"PATCH","service":"orders-service","stack":"Error: Transição inválida de ENTREGUE para CONFIRMADO\n    at PedidoService.updatePedidoStatus (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\PedidoService.js:135:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at updateStatus (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\PedidoController.js:58:22)","timestamp":"2025-10-26 17:57:39","url":"/api/v1/pedidos/68fe8b430882515190e906a0/status"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:39 +0000] \"PATCH /api/v1/pedidos/68fe8b430882515190e906a0/status HTTP/1.1\" 400 106 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"id":"68fe8b430882515190e906b4","level":"info","message":"Cancelando pedido","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"id":"68fe8b430882515190e906b4","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"id":"68fe8b430882515190e906b4","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CANCELADO","timestamp":"2025-10-26 17:57:39"}
+{"id":"68fe8b430882515190e906b4","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"id":"68fe8b430882515190e906b4","level":"info","message":"Status do pedido atualizado com sucesso","service":"orders-service","status":"CANCELADO","timestamp":"2025-10-26 17:57:39"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:39 +0000] \"PATCH /api/v1/pedidos/68fe8b430882515190e906b4/cancelar HTTP/1.1\" 200 642 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"id":"68fe8b430882515190e906cc","level":"info","message":"Cancelando pedido","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"id":"68fe8b430882515190e906cc","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"error":"Pedido não pode ser cancelado","id":"68fe8b430882515190e906cc","level":"error","message":"Erro ao cancelar pedido","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"level":"error","message":"Pedido não pode ser cancelado","method":"PATCH","service":"orders-service","stack":"Error: Pedido não pode ser cancelado\n    at PedidoService.cancelarPedido (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\PedidoService.js:157:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at cancel (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\PedidoController.js:73:22)","timestamp":"2025-10-26 17:57:39","url":"/api/v1/pedidos/68fe8b430882515190e906cc/cancelar"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:39 +0000] \"PATCH /api/v1/pedidos/68fe8b430882515190e906cc/cancelar HTTP/1.1\" 400 87 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:39"}
+{"email":"test@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"id":"68fe8b4489ea5228081fb287","level":"info","message":"Cliente criado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:40 +0000] \"POST /api/v1/clientes HTTP/1.1\" 201 484 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"email":"duplicate@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"error":"Email já cadastrado","level":"error","message":"Erro ao criar cliente","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"level":"error","message":"Email já cadastrado","method":"POST","service":"orders-service","stack":"Error: Email já cadastrado\n    at ClienteService.createCliente (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:41:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at create (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:35:23)","timestamp":"2025-10-26 17:57:40","url":"/api/v1/clientes"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:40 +0000] \"POST /api/v1/clientes HTTP/1.1\" 409 77 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:40 +0000] \"POST /api/v1/clientes HTTP/1.1\" 400 651 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"filters":{},"level":"info","message":"Buscando todos os clientes","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:40 +0000] \"GET /api/v1/clientes HTTP/1.1\" 200 424 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"filters":{"status":"ATIVO"},"level":"info","message":"Buscando todos os clientes","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:40 +0000] \"GET /api/v1/clientes?status=ATIVO HTTP/1.1\" 200 424 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"filters":{"search":"Test"},"level":"info","message":"Buscando todos os clientes","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:40 +0000] \"GET /api/v1/clientes?search=Test HTTP/1.1\" 200 424 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"id":"68fe8b4489ea5228081fb2b9","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:40 +0000] \"GET /api/v1/clientes/68fe8b4489ea5228081fb2b9 HTTP/1.1\" 200 410 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"id":"68fe8b4489ea5228081fb2c4","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"error":"Cliente não encontrado","id":"68fe8b4489ea5228081fb2c4","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"level":"error","message":"Cliente não encontrado","method":"GET","service":"orders-service","stack":"Error: Cliente não encontrado\n    at ClienteService.getClienteById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:22:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at getById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:22:23)","timestamp":"2025-10-26 17:57:40","url":"/api/v1/clientes/68fe8b4489ea5228081fb2c4"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:40 +0000] \"GET /api/v1/clientes/68fe8b4489ea5228081fb2c4 HTTP/1.1\" 404 80 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:40 +0000] \"GET /api/v1/clientes/invalid-id HTTP/1.1\" 400 89 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"id":"68fe8b4489ea5228081fb2d4","level":"info","message":"Atualizando cliente","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"id":"68fe8b4489ea5228081fb2d4","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"id":"68fe8b4489ea5228081fb2d4","level":"info","message":"Cliente atualizado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:40 +0000] \"PUT /api/v1/clientes/68fe8b4489ea5228081fb2d4 HTTP/1.1\" 200 455 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"id":"68fe8b4489ea5228081fb2de","level":"info","message":"Atualizando cliente","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"id":"68fe8b4489ea5228081fb2de","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"error":"Email já cadastrado","id":"68fe8b4489ea5228081fb2de","level":"error","message":"Erro ao atualizar cliente","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"level":"error","message":"Email já cadastrado","method":"PUT","service":"orders-service","stack":"Error: Email já cadastrado\n    at ClienteService.updateCliente (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:75:25)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at update (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:50:23)","timestamp":"2025-10-26 17:57:40","url":"/api/v1/clientes/68fe8b4489ea5228081fb2de"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:40 +0000] \"PUT /api/v1/clientes/68fe8b4489ea5228081fb2de HTTP/1.1\" 409 77 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"id":"68fe8b4489ea5228081fb2ea","level":"info","message":"Deletando cliente","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"id":"68fe8b4489ea5228081fb2ea","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"id":"68fe8b4489ea5228081fb2ea","level":"info","message":"Cliente deletado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:40 +0000] \"DELETE /api/v1/clientes/68fe8b4489ea5228081fb2ea HTTP/1.1\" 204 - \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"id":"68fe8b4489ea5228081fb2f7","level":"info","message":"Deletando cliente","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"id":"68fe8b4489ea5228081fb2f7","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"error":"Cliente não encontrado","id":"68fe8b4489ea5228081fb2f7","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"error":"Cliente não encontrado","id":"68fe8b4489ea5228081fb2f7","level":"error","message":"Erro ao deletar cliente","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"level":"error","message":"Cliente não encontrado","method":"DELETE","service":"orders-service","stack":"Error: Cliente não encontrado\n    at ClienteService.getClienteById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:22:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at ClienteService.deleteCliente (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:96:7)\n    at delete (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:65:7)","timestamp":"2025-10-26 17:57:40","url":"/api/v1/clientes/68fe8b4489ea5228081fb2f7"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:57:40 +0000] \"DELETE /api/v1/clientes/68fe8b4489ea5228081fb2f7 HTTP/1.1\" 404 80 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:57:40"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:57:42"}
+{"id":"pedido123","level":"info","message":"Pedido criado com sucesso","numero":"PED000001","service":"orders-service","timestamp":"2025-10-26 17:57:42"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:57:42"}
+{"error":"Cliente não encontrado","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:57:42"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:57:42"}
+{"error":"Restaurante não está ativo","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:57:42"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:57:42"}
+{"error":"Item não disponível: Pizza","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:57:42"}
+{"id":"pedido123","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:57:42"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:57:42"}
+{"id":"pedido123","level":"info","message":"Status do pedido atualizado com sucesso","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:57:42"}
+{"id":"pedido123","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:57:42"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:57:42"}
+{"error":"Transição inválida de ENTREGUE para CONFIRMADO","id":"pedido123","level":"error","message":"Erro ao atualizar status do pedido","service":"orders-service","timestamp":"2025-10-26 17:57:42"}
+{"id":"pedido123","level":"info","message":"Cancelando pedido","service":"orders-service","timestamp":"2025-10-26 17:57:42"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:57:42"}
+{"id":"pedido123","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CANCELADO","timestamp":"2025-10-26 17:57:42"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:57:42"}
+{"id":"pedido123","level":"info","message":"Status do pedido atualizado com sucesso","service":"orders-service","status":"CANCELADO","timestamp":"2025-10-26 17:57:42"}
+{"id":"pedido123","level":"info","message":"Cancelando pedido","service":"orders-service","timestamp":"2025-10-26 17:57:42"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:57:42"}
+{"error":"Pedido não pode ser cancelado","id":"pedido123","level":"error","message":"Erro ao cancelar pedido","service":"orders-service","timestamp":"2025-10-26 17:57:42"}
+{"email":"joao@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:57:43"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Cliente criado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:57:43"}
+{"email":"joao@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:57:43"}
+{"error":"Email já cadastrado","level":"error","message":"Erro ao criar cliente","service":"orders-service","timestamp":"2025-10-26 17:57:43"}
+{"email":"joao@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:57:43"}
+{"error":"CPF já cadastrado","level":"error","message":"Erro ao criar cliente","service":"orders-service","timestamp":"2025-10-26 17:57:43"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:57:43"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:57:43"}
+{"error":"Cliente não encontrado","id":"507f1f77bcf86cd799439011","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:57:43"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Atualizando cliente","service":"orders-service","timestamp":"2025-10-26 17:57:43"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:57:43"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Cliente atualizado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:57:43"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Deletando cliente","service":"orders-service","timestamp":"2025-10-26 17:57:43"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:57:43"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Cliente deletado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:57:43"}
+{"clienteId":"68fe8bade7e3be65f6cce588","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"id":"68fe8bade7e3be65f6cce59a","level":"info","message":"Pedido criado com sucesso","numero":"PED000001","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:25 +0000] \"POST /api/v1/pedidos HTTP/1.1\" 201 638 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"clienteId":"68fe8bade7e3be65f6cce5a3","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"error":"Item não disponível: Prato Teste","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"level":"error","message":"Item não disponível: Prato Teste","method":"POST","service":"orders-service","stack":"Error: Item não disponível: Prato Teste\n    at PedidoService.createPedido (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\PedidoService.js:77:25)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at create (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\PedidoController.js:41:22)","timestamp":"2025-10-26 17:59:25","url":"/api/v1/pedidos"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:25 +0000] \"POST /api/v1/pedidos HTTP/1.1\" 400 91 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:25 +0000] \"POST /api/v1/pedidos HTTP/1.1\" 400 103 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"filters":{},"level":"info","message":"Buscando todos os pedidos","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:25 +0000] \"GET /api/v1/pedidos HTTP/1.1\" 200 860 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"filters":{"clienteId":"68fe8bade7e3be65f6cce5d4"},"level":"info","message":"Buscando todos os pedidos","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:25 +0000] \"GET /api/v1/pedidos?clienteId=68fe8bade7e3be65f6cce5d4 HTTP/1.1\" 200 860 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"filters":{"status":"PENDENTE"},"level":"info","message":"Buscando todos os pedidos","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:25 +0000] \"GET /api/v1/pedidos?status=PENDENTE HTTP/1.1\" 200 860 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:25 +0000] \"GET /api/v1/pedidos/dashboard HTTP/1.1\" 200 100 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"id":"68fe8bade7e3be65f6cce611","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:59:25"}
+{"id":"68fe8bade7e3be65f6cce611","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"id":"68fe8bade7e3be65f6cce611","level":"info","message":"Status do pedido atualizado com sucesso","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:59:25"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:25 +0000] \"PATCH /api/v1/pedidos/68fe8bade7e3be65f6cce611/status HTTP/1.1\" 200 699 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"id":"68fe8bade7e3be65f6cce625","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:59:25"}
+{"id":"68fe8bade7e3be65f6cce625","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"error":"Transição inválida de ENTREGUE para CONFIRMADO","id":"68fe8bade7e3be65f6cce625","level":"error","message":"Erro ao atualizar status do pedido","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"level":"error","message":"Transição inválida de ENTREGUE para CONFIRMADO","method":"PATCH","service":"orders-service","stack":"Error: Transição inválida de ENTREGUE para CONFIRMADO\n    at PedidoService.updatePedidoStatus (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\PedidoService.js:135:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at updateStatus (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\PedidoController.js:58:22)","timestamp":"2025-10-26 17:59:25","url":"/api/v1/pedidos/68fe8bade7e3be65f6cce625/status"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:25 +0000] \"PATCH /api/v1/pedidos/68fe8bade7e3be65f6cce625/status HTTP/1.1\" 400 106 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"id":"68fe8bade7e3be65f6cce639","level":"info","message":"Cancelando pedido","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"id":"68fe8bade7e3be65f6cce639","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"id":"68fe8bade7e3be65f6cce639","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CANCELADO","timestamp":"2025-10-26 17:59:25"}
+{"id":"68fe8bade7e3be65f6cce639","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"id":"68fe8bade7e3be65f6cce639","level":"info","message":"Status do pedido atualizado com sucesso","service":"orders-service","status":"CANCELADO","timestamp":"2025-10-26 17:59:25"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:25 +0000] \"PATCH /api/v1/pedidos/68fe8bade7e3be65f6cce639/cancelar HTTP/1.1\" 200 642 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"id":"68fe8bade7e3be65f6cce651","level":"info","message":"Cancelando pedido","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"id":"68fe8bade7e3be65f6cce651","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"error":"Pedido não pode ser cancelado","id":"68fe8bade7e3be65f6cce651","level":"error","message":"Erro ao cancelar pedido","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"level":"error","message":"Pedido não pode ser cancelado","method":"PATCH","service":"orders-service","stack":"Error: Pedido não pode ser cancelado\n    at PedidoService.cancelarPedido (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\PedidoService.js:157:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at cancel (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\PedidoController.js:73:22)","timestamp":"2025-10-26 17:59:25","url":"/api/v1/pedidos/68fe8bade7e3be65f6cce651/cancelar"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:25 +0000] \"PATCH /api/v1/pedidos/68fe8bade7e3be65f6cce651/cancelar HTTP/1.1\" 400 87 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:25"}
+{"email":"test@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"id":"68fe8baf19a7d730e00a479e","level":"info","message":"Cliente criado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:27 +0000] \"POST /api/v1/clientes HTTP/1.1\" 201 484 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"email":"duplicate@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"error":"Email já cadastrado","level":"error","message":"Erro ao criar cliente","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"level":"error","message":"Email já cadastrado","method":"POST","service":"orders-service","stack":"Error: Email já cadastrado\n    at ClienteService.createCliente (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:41:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at create (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:35:23)","timestamp":"2025-10-26 17:59:27","url":"/api/v1/clientes"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:27 +0000] \"POST /api/v1/clientes HTTP/1.1\" 409 77 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:27 +0000] \"POST /api/v1/clientes HTTP/1.1\" 400 651 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"filters":{},"level":"info","message":"Buscando todos os clientes","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:27 +0000] \"GET /api/v1/clientes HTTP/1.1\" 200 424 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"filters":{"status":"ATIVO"},"level":"info","message":"Buscando todos os clientes","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:27 +0000] \"GET /api/v1/clientes?status=ATIVO HTTP/1.1\" 200 424 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"filters":{"search":"Test"},"level":"info","message":"Buscando todos os clientes","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:27 +0000] \"GET /api/v1/clientes?search=Test HTTP/1.1\" 200 424 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"id":"68fe8baf19a7d730e00a47d1","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:27 +0000] \"GET /api/v1/clientes/68fe8baf19a7d730e00a47d1 HTTP/1.1\" 200 410 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"id":"68fe8baf19a7d730e00a47dc","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"error":"Cliente não encontrado","id":"68fe8baf19a7d730e00a47dc","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"level":"error","message":"Cliente não encontrado","method":"GET","service":"orders-service","stack":"Error: Cliente não encontrado\n    at ClienteService.getClienteById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:22:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at getById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:22:23)","timestamp":"2025-10-26 17:59:27","url":"/api/v1/clientes/68fe8baf19a7d730e00a47dc"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:27 +0000] \"GET /api/v1/clientes/68fe8baf19a7d730e00a47dc HTTP/1.1\" 404 80 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:27 +0000] \"GET /api/v1/clientes/invalid-id HTTP/1.1\" 400 89 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"id":"68fe8baf19a7d730e00a47ec","level":"info","message":"Atualizando cliente","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"id":"68fe8baf19a7d730e00a47ec","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"id":"68fe8baf19a7d730e00a47ec","level":"info","message":"Cliente atualizado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:27 +0000] \"PUT /api/v1/clientes/68fe8baf19a7d730e00a47ec HTTP/1.1\" 200 455 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"id":"68fe8baf19a7d730e00a47f6","level":"info","message":"Atualizando cliente","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"id":"68fe8baf19a7d730e00a47f6","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"error":"Email já cadastrado","id":"68fe8baf19a7d730e00a47f6","level":"error","message":"Erro ao atualizar cliente","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"level":"error","message":"Email já cadastrado","method":"PUT","service":"orders-service","stack":"Error: Email já cadastrado\n    at ClienteService.updateCliente (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:75:25)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at update (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:50:23)","timestamp":"2025-10-26 17:59:27","url":"/api/v1/clientes/68fe8baf19a7d730e00a47f6"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:27 +0000] \"PUT /api/v1/clientes/68fe8baf19a7d730e00a47f6 HTTP/1.1\" 409 77 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"id":"68fe8baf19a7d730e00a4802","level":"info","message":"Deletando cliente","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"id":"68fe8baf19a7d730e00a4802","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"id":"68fe8baf19a7d730e00a4802","level":"info","message":"Cliente deletado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:27 +0000] \"DELETE /api/v1/clientes/68fe8baf19a7d730e00a4802 HTTP/1.1\" 204 - \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"id":"68fe8baf19a7d730e00a480f","level":"info","message":"Deletando cliente","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"id":"68fe8baf19a7d730e00a480f","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"error":"Cliente não encontrado","id":"68fe8baf19a7d730e00a480f","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"error":"Cliente não encontrado","id":"68fe8baf19a7d730e00a480f","level":"error","message":"Erro ao deletar cliente","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"level":"error","message":"Cliente não encontrado","method":"DELETE","service":"orders-service","stack":"Error: Cliente não encontrado\n    at ClienteService.getClienteById (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:22:23)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at ClienteService.deleteCliente (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\services\\ClienteService.js:96:7)\n    at delete (C:\\Users\\Pichau\\OneDrive\\Área de Trabalho\\Eng Software\\orders-service-microservice\\src\\controllers\\ClienteController.js:65:7)","timestamp":"2025-10-26 17:59:27","url":"/api/v1/clientes/68fe8baf19a7d730e00a480f"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [26/Oct/2025:20:59:27 +0000] \"DELETE /api/v1/clientes/68fe8baf19a7d730e00a480f HTTP/1.1\" 404 80 \"-\" \"-\"","service":"orders-service","timestamp":"2025-10-26 17:59:27"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:59:29"}
+{"id":"pedido123","level":"info","message":"Pedido criado com sucesso","numero":"PED000001","service":"orders-service","timestamp":"2025-10-26 17:59:29"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:59:29"}
+{"error":"Cliente não encontrado","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:59:29"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:59:29"}
+{"error":"Restaurante não está ativo","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:59:29"}
+{"clienteId":"cliente123","level":"info","message":"Criando novo pedido","service":"orders-service","timestamp":"2025-10-26 17:59:29"}
+{"error":"Item não disponível: Pizza","level":"error","message":"Erro ao criar pedido","service":"orders-service","timestamp":"2025-10-26 17:59:29"}
+{"id":"pedido123","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:59:29"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:59:29"}
+{"id":"pedido123","level":"info","message":"Status do pedido atualizado com sucesso","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:59:29"}
+{"id":"pedido123","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CONFIRMADO","timestamp":"2025-10-26 17:59:29"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:59:29"}
+{"error":"Transição inválida de ENTREGUE para CONFIRMADO","id":"pedido123","level":"error","message":"Erro ao atualizar status do pedido","service":"orders-service","timestamp":"2025-10-26 17:59:29"}
+{"id":"pedido123","level":"info","message":"Cancelando pedido","service":"orders-service","timestamp":"2025-10-26 17:59:29"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:59:29"}
+{"id":"pedido123","level":"info","message":"Atualizando status do pedido","service":"orders-service","status":"CANCELADO","timestamp":"2025-10-26 17:59:29"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:59:29"}
+{"id":"pedido123","level":"info","message":"Status do pedido atualizado com sucesso","service":"orders-service","status":"CANCELADO","timestamp":"2025-10-26 17:59:29"}
+{"id":"pedido123","level":"info","message":"Cancelando pedido","service":"orders-service","timestamp":"2025-10-26 17:59:29"}
+{"id":"pedido123","level":"info","message":"Buscando pedido por ID","service":"orders-service","timestamp":"2025-10-26 17:59:29"}
+{"error":"Pedido não pode ser cancelado","id":"pedido123","level":"error","message":"Erro ao cancelar pedido","service":"orders-service","timestamp":"2025-10-26 17:59:29"}
+{"email":"joao@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:59:30"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Cliente criado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:59:30"}
+{"email":"joao@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:59:30"}
+{"error":"Email já cadastrado","level":"error","message":"Erro ao criar cliente","service":"orders-service","timestamp":"2025-10-26 17:59:30"}
+{"email":"joao@example.com","level":"info","message":"Criando novo cliente","service":"orders-service","timestamp":"2025-10-26 17:59:30"}
+{"error":"CPF já cadastrado","level":"error","message":"Erro ao criar cliente","service":"orders-service","timestamp":"2025-10-26 17:59:30"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:59:30"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:59:30"}
+{"error":"Cliente não encontrado","id":"507f1f77bcf86cd799439011","level":"error","message":"Erro ao buscar cliente","service":"orders-service","timestamp":"2025-10-26 17:59:30"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Atualizando cliente","service":"orders-service","timestamp":"2025-10-26 17:59:30"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:59:30"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Cliente atualizado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:59:30"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Deletando cliente","service":"orders-service","timestamp":"2025-10-26 17:59:30"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Buscando cliente por ID","service":"orders-service","timestamp":"2025-10-26 17:59:30"}
+{"id":"507f1f77bcf86cd799439011","level":"info","message":"Cliente deletado com sucesso","service":"orders-service","timestamp":"2025-10-26 17:59:30"}
