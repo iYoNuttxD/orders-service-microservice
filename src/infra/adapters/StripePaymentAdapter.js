@@ -18,7 +18,10 @@ class StripePaymentAdapter {
   }
 
   getStatus() {
-    return { enabled: this.enabled };
+    if (!this.enabled) {
+      return { status: 'disabled', message: 'Stripe not configured' };
+    }
+    return { status: 'healthy', message: 'Stripe is operational' };
   }
 
   // Contrato esperado pelo PayOrder use-case
