@@ -53,7 +53,7 @@ const pedidoSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['PENDENTE', 'CONFIRMADO', 'PREPARANDO', 'PRONTO', 'EM_ENTREGA', 'ENTREGUE', 'CANCELADO'],
+    enum: ['PENDENTE', 'PAGO', 'CONFIRMADO', 'PREPARANDO', 'PRONTO', 'EM_ENTREGA', 'ENTREGUE', 'CANCELADO', 'FAILED_PAYMENT'],
     default: 'PENDENTE'
   },
   enderecoEntrega: {
@@ -71,7 +71,13 @@ const pedidoSchema = new mongoose.Schema({
     default: Date.now
   },
   dataConfirmacao: Date,
-  dataEntrega: Date
+  dataEntrega: Date,
+  paymentTransactionId: String,
+  paymentMethod: String,
+  paymentProvider: String,
+  paymentAt: Date,
+  paymentRefundedAt: Date,
+  refundId: String
 }, {
   timestamps: true
 });

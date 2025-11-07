@@ -26,6 +26,7 @@ const GetDashboardStats = require('../features/orders/use-cases/GetDashboardStat
 // Handlers
 const OrdersHandlers = require('../features/orders/http/handlers');
 const { SystemHandlers } = require('../features/system/http/handlers');
+const StripeWebhookHandler = require('../features/stripe/http/webhook-handler');
 
 const logger = require('../utils/logger');
 
@@ -189,10 +190,12 @@ class Container {
 
   getPayOrderUseCase() {
     return this._getSingleton('payOrderUseCase', () => {
+      const { metrics } = require('../features/system/http/handlers');
       return new PayOrder({
         orderRepository: this.getOrderRepository(),
         paymentGateway: this.getPaymentGateway(),
-        messageBus: this.getMessageBus()
+        messageBus: this.getMessageBus(),
+        metrics
       });
     });
   }
@@ -245,6 +248,27 @@ class Container {
         messageBus: this.getMessageBus(),
         policyClient: this.getPolicyClient(),
         paymentGateway: this.getPaymentGateway()
+      });
+    });
+  }
+
+  getStripeWebhookHandler() {
+    return this._getSingleton('stripeWebhookHandler', () => {
+      const provider = (process.env.PAYMENT_PROVIDER || 'http').trim().toLowerCase();
+      
+      if (provider !== 'stripe') {
+        // Return a dummy handler if Stripe is not configured
+        return null;
+      }
+
+      const paymentGateway = this.getPaymentGateway();
+      const stripe = paymentGateway.stripe || null;
+      const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+
+      return new StripeWebhookHandler({
+        orderRepository: this.getOrderRepository(),
+        stripe,
+        webhookSecret
       });
     });
   }

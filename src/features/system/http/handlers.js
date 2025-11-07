@@ -20,6 +20,31 @@ const ordersCanceledCounter = new Counter({
   help: 'Total number of orders canceled'
 });
 
+const paymentsAttemptCounter = new Counter({
+  name: 'orders_service_payments_attempt_total',
+  help: 'Total number of payment attempts',
+  labelNames: ['provider']
+});
+
+const paymentsSuccessCounter = new Counter({
+  name: 'orders_service_payments_success_total',
+  help: 'Total number of successful payments',
+  labelNames: ['provider']
+});
+
+const paymentsFailureCounter = new Counter({
+  name: 'orders_service_payments_failure_total',
+  help: 'Total number of failed payments',
+  labelNames: ['provider']
+});
+
+const paymentLatencyHistogram = new Histogram({
+  name: 'orders_service_payment_latency_seconds',
+  help: 'Payment processing latency in seconds',
+  labelNames: ['provider', 'status'],
+  buckets: [0.1, 0.5, 1, 2, 5, 10]
+});
+
 const httpRequestDuration = new Histogram({
   name: 'orders_service_http_request_duration_seconds',
   help: 'Duration of HTTP requests in seconds',
@@ -143,6 +168,10 @@ module.exports = {
   metrics: {
     ordersCreatedCounter,
     ordersPaidCounter,
-    ordersCanceledCounter
+    ordersCanceledCounter,
+    paymentsAttemptCounter,
+    paymentsSuccessCounter,
+    paymentsFailureCounter,
+    paymentLatencyHistogram
   }
 };

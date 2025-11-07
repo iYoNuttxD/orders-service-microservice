@@ -74,6 +74,23 @@ class InMemoryOrderRepository extends OrderRepository {
     return order;
   }
 
+  async update(id, orderData) {
+    const order = this.orders.get(id);
+    if (!order) {
+      throw new Error('Order not found');
+    }
+
+    // Update order fields
+    Object.keys(orderData).forEach(key => {
+      if (key !== 'id') {
+        order[key] = orderData[key];
+      }
+    });
+    order.updatedAt = new Date();
+
+    return order;
+  }
+
   async countByStatus(status) {
     return Array.from(this.orders.values())
       .filter(o => o.status === status)

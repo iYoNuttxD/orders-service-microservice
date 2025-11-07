@@ -79,6 +79,7 @@ describe('PayOrder Use Case', () => {
       amount: 96.80,
       method: 'credit_card',
       orderId: order.id,
+      idempotencyKey: expect.any(String),
       metadata: expect.objectContaining({
         numero: order.numero,
         clienteId: 'cliente123',

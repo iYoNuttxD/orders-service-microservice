@@ -126,13 +126,22 @@ OPA_URL=https://your-opa-worker.workers.dev
 OPA_POLICY_PATH=/v1/data/orders/allow
 OPA_FAIL_OPEN=true
 
-# Payment Gateway (leave empty to simulate)
+# Payment Provider - Options: 'stripe' or 'http'
+PAYMENT_PROVIDER=stripe
+
+# Stripe Configuration (when PAYMENT_PROVIDER=stripe)
+STRIPE_SECRET_KEY=sk_test_xxx   # Get from Stripe Dashboard
+STRIPE_CURRENCY=brl              # Currency code (brl, usd, etc.)
+STRIPE_WEBHOOK_SECRET=whsec_xxx  # For webhook signature verification
+
+# HTTP Payment Gateway (when PAYMENT_PROVIDER=http)
 PAYMENT_BASE_URL=https://payment-api.example.com/api
 PAYMENT_API_KEY=your_api_key
 
 # Optional
 LOG_LEVEL=info
 METRICS_ENABLED=true
+PAYMENT_TIMEOUT=5000
 ```
 
 ### 4. Run the Service
@@ -163,9 +172,12 @@ The service will start on `http://localhost:3002`
 - `GET /api/v1/pedidos/dashboard` - Statistics
 - `GET /api/v1/pedidos/:id` - Get order by ID
 - `POST /api/v1/pedidos` - Create new order
-- `POST /api/v1/pedidos/:id/pay` - Process payment
+- `POST /api/v1/pedidos/:id/pay` - Process payment (supports Idempotency-Key header)
 - `PATCH /api/v1/pedidos/:id/status` - Update status
 - `PATCH /api/v1/pedidos/:id/cancelar` - Cancel order
+
+### Stripe Webhooks
+- `POST /api/v1/stripe/webhook` - Stripe webhook endpoint for payment events
 
 ### Legacy Endpoints (Backward Compatible)
 - `/api/v1/clientes` - Customers CRUD
@@ -208,10 +220,13 @@ curl -X POST http://localhost:3002/api/v1/pedidos \
 ```bash
 curl -X POST http://localhost:3002/api/v1/pedidos/64abc123.../pay \
   -H "Content-Type: application/json" \
+  -H "Idempotency-Key: unique-request-id-123" \
   -d '{
     "paymentMethod": "credit_card"
   }'
 ```
+
+**Note:** The `Idempotency-Key` header is optional but recommended. If not provided, a fallback key is generated based on order ID and amount.
 
 **Health Check:**
 ```bash
@@ -382,6 +397,70 @@ View HTML report: `coverage/lcov-report/index.html`
 
 ---
 
+## 💳 Stripe Integration
+
+### Setup Stripe Webhooks
+
+1. **Get your Stripe keys from the Dashboard:**
+   - Test mode: https://dashboard.stripe.com/test/apikeys
+   - Production: https://dashboard.stripe.com/apikeys
+
+2. **Configure environment variables:**
+```env
+PAYMENT_PROVIDER=stripe
+STRIPE_SECRET_KEY=sk_test_xxx  # or sk_live_xxx for production
+STRIPE_CURRENCY=brl
+STRIPE_WEBHOOK_SECRET=whsec_xxx
+```
+
+3. **Set up webhook endpoint in Stripe Dashboard:**
+   - Go to: https://dashboard.stripe.com/test/webhooks
+   - Click "Add endpoint"
+   - Enter your endpoint URL: `https://your-domain.com/api/v1/stripe/webhook`
+   - Select events to listen to:
+     - `payment_intent.succeeded`
+     - `payment_intent.payment_failed`
+     - `charge.refunded`
+   - Copy the webhook signing secret and set as `STRIPE_WEBHOOK_SECRET`
+
+4. **Test webhook locally with Stripe CLI:**
+```bash
+# Install Stripe CLI
+brew install stripe/stripe-cli/stripe
+
+# Forward webhooks to local server
+stripe listen --forward-to localhost:3002/api/v1/stripe/webhook
+
+# Trigger test events
+stripe trigger payment_intent.succeeded
+```
+
+### Idempotency
+
+The service supports idempotency for payment requests:
+
+- **Automatic**: Send `Idempotency-Key` header with payment requests
+- **Fallback**: If no key provided, one is generated based on order ID and amount
+- **Stripe**: Idempotency keys are forwarded to Stripe API to prevent duplicate charges
+
+**Example:**
+```bash
+curl -X POST http://localhost:3002/api/v1/pedidos/:id/pay \
+  -H "Idempotency-Key: order-123-attempt-1" \
+  -H "Content-Type: application/json" \
+  -d '{"paymentMethod": "credit_card"}'
+```
+
+Sending the same request twice with the same idempotency key will return the same result without creating a new charge.
+
+### Payment Status Flow
+
+1. **PENDENTE** → Payment attempted → **PAGO** (success) or **FAILED_PAYMENT** (failure)
+2. **PAGO** → Can transition to **CONFIRMADO** → **PREPARANDO** → etc.
+3. **FAILED_PAYMENT** → Can retry payment, returns to **PENDENTE** if resolved
+
+---
+
 ## 📊 Monitoring
 
 ### Health Check
@@ -414,6 +493,10 @@ curl http://localhost:3002/api/v1/metrics
 - `orders_service_orders_created_total` - Total orders created
 - `orders_service_orders_paid_total` - Total orders paid
 - `orders_service_orders_canceled_total` - Total orders canceled
+- `orders_service_payments_attempt_total` - Payment attempts (by provider)
+- `orders_service_payments_success_total` - Successful payments (by provider)
+- `orders_service_payments_failure_total` - Failed payments (by provider)
+- `orders_service_payment_latency_seconds` - Payment processing latency histogram
 - `orders_service_http_request_duration_seconds` - HTTP request latency
 
 ---
