@@ -25,38 +25,40 @@ info:
     url: https://opensource.org/licenses/MIT
 
 servers:
-  - url: http://localhost:3002/api/v1
-    description: Servidor de Desenvolvimento Local
+  - url: /api/v1
+    description: Relative path (recommended for Swagger UI)
   - url: https://orders-service.azurewebsites.net/api/v1
-    description: Servidor de Produção (Azure)
+    description: Azure Production Server
+  - url: http://localhost:3002/api/v1
+    description: Local Development Server
 
 tags:
-  - name: Health
-    description: Status do serviço
+  - name: System
+    description: Health checks and metrics
+  - name: Pedidos
+    description: Orders management operations
   - name: Clientes
     description: Operações relacionadas aos clientes
   - name: Restaurantes
     description: Operações relacionadas aos restaurantes
   - name: Cardápios
     description: Operações relacionadas aos cardápios
-  - name: Pedidos
-    description: Operações relacionadas aos pedidos
   - name: Avaliações
     description: Operações relacionadas às avaliações
   - name: Pagamentos
     description: Operações relacionadas aos pagamentos
 
 paths:
-  # ==================== HEALTH ====================
+  # ==================== SYSTEM ====================
   /health:
     get:
       tags:
-        - Health
-      summary: Verificar status do serviço
-      description: Retorna o status de saúde do microservice
+        - System
+      summary: Health check with integration statuses
+      description: Returns service health and status of all integrations (NATS, OPA, Payment Gateway)
       responses:
         '200':
-          description: Serviço operacional
+          description: Service operational
           content:
             application/json:
               schema:
@@ -77,6 +79,51 @@ paths:
                   database:
                     type: string
                     example: MongoDB Atlas
+                  integrations:
+                    type: object
+                    properties:
+                      nats:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            example: healthy
+                          message:
+                            type: string
+                      opa:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            example: disabled
+                          message:
+                            type: string
+                      payment:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            example: healthy
+                          message:
+                            type: string
+
+  /metrics:
+    get:
+      tags:
+        - System
+      summary: Prometheus metrics
+      description: Returns Prometheus-formatted metrics for monitoring
+      responses:
+        '200':
+          description: Metrics in Prometheus format
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: |
+                  # HELP orders_service_orders_created_total Total number of orders created
+                  # TYPE orders_service_orders_created_total counter
+                  orders_service_orders_created_total 42
 
   # ==================== CLIENTES ====================
   /clientes:
@@ -458,9 +505,95 @@ paths:
       summary: Cancelar pedido
       parameters:
         - $ref: '#/components/parameters/IdParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                  description: Reason for cancellation
+                  example: Customer request
+                canceledBy:
+                  type: string
+                  description: User ID who canceled the order
+                  example: 64abc123...
       responses:
         '200':
           description: Pedido cancelado
+        '400':
+          description: Order cannot be canceled
+        '404':
+          description: Order not found
+
+  /pedidos/{id}/pay:
+    post:
+      tags:
+        - Pedidos
+      summary: Process payment for order
+      description: Process payment through integrated payment gateway
+      parameters:
+        - $ref: '#/components/parameters/IdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - paymentMethod
+              properties:
+                paymentMethod:
+                  type: string
+                  description: Payment method
+                  example: credit_card
+                  enum:
+                    - credit_card
+                    - debit_card
+                    - pix
+                    - cash
+                cardNumber:
+                  type: string
+                  description: Card number (masked)
+                  example: "**** 1234"
+      responses:
+        '200':
+          description: Payment processed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Pagamento processado com sucesso
+                  data:
+                    type: object
+                    properties:
+                      order:
+                        $ref: '#/components/schemas/Pedido'
+                      payment:
+                        type: object
+                        properties:
+                          transactionId:
+                            type: string
+                            example: TXN123456
+                          status:
+                            type: string
+                            example: APPROVED
+                          message:
+                            type: string
+                            example: Payment approved
+        '402':
+          description: Payment declined
+        '404':
+          description: Order not found
+        '400':
+          description: Order cannot be paid
 
   # ==================== AVALIAÇÕES ====================
   /avaliacoes:
