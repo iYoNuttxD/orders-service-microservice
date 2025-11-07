@@ -107,7 +107,7 @@ cp .env.example .env
 ```env
 NODE_ENV=production
 PORT=3002
-MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/ordersdb
+MONGODB_URI=
 ```
 
 **Full configuration (all integrations):**
@@ -116,7 +116,7 @@ NODE_ENV=production
 PORT=3002
 
 # MongoDB Atlas
-MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/ordersdb
+MONGODB_URI=
 
 # NATS (leave empty to disable)
 NATS_URL=nats://demo.nats.io:4222
