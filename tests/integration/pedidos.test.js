@@ -3,7 +3,7 @@ const app = require('../../src/app');
 const Cliente = require('../../src/models/Cliente');
 const Restaurante = require('../../src/models/Restaurante');
 const Cardapio = require('../../src/models/Cardapio');
-const Pedido = require('../../src/models/Pedido');
+const Pedido = require('../../src/infra/repositories/mongodb/models/Pedido');
 
 // Função auxiliar para gerar CPF único
 function gerarCpf() {
