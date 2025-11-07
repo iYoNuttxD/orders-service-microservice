@@ -25,6 +25,12 @@ const pagamentosRoutes = require('../routes/pagamentos.routes');
  * Connect to MongoDB with retry logic
  */
 async function connectDB(retries = 5, delay = 2000) {
+  // Check if MongoDB URI is configured
+  if (!process.env.MONGODB_URI || process.env.MONGODB_URI.trim() === '') {
+    logger.warn('⚠️  MongoDB URI not configured, skipping database connection');
+    return false;
+  }
+
   for (let i = 0; i < retries; i++) {
     try {
       const options = {
