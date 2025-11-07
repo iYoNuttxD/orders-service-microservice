@@ -68,11 +68,18 @@ class PaymentIntegrationAdapter extends PaymentGatewayPort {
     try {
       logger.info('Processing payment', { orderId, amount, method });
       
+      // Generate idempotency key for payment
+      const idempotencyKey = `order-${orderId}-${Date.now()}`;
+      
       const response = await this.client.post('/payments', {
         amount,
         method,
         orderId,
         metadata
+      }, {
+        headers: {
+          'Idempotency-Key': idempotencyKey
+        }
       });
 
       if (response.data.status === 'APPROVED' || response.data.status === 'approved') {
