@@ -1,6 +1,6 @@
 const Order = require('../../../domain/entities/Order');
 const OrderRepositoryPort = require('../../../domain/ports/OrderRepository');
-const Pedido = require('../../../models/Pedido');
+const Pedido = require('./models/Pedido');
 
 /**
  * MongoDB OrderRepository Implementation
