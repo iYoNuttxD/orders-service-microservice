@@ -15,7 +15,7 @@ describe('PayOrder Use Case', () => {
     paymentGateway = {
       processPayment: jest.fn(),
       isEnabled: () => true,
-      constructor: { name: 'StripePaymentAdapter' }
+      getProviderName: () => 'stripe'
     };
     
     messageBus = {

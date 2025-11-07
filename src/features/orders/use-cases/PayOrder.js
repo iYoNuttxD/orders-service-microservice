@@ -63,7 +63,8 @@ class PayOrder {
       }
 
       // Determine provider from gateway
-      provider = this.paymentGateway.constructor.name === 'StripePaymentAdapter' ? 'stripe' : 'http';
+      provider = this.paymentGateway.getProviderName?.() || 
+                 (this.paymentGateway.constructor.name === 'StripePaymentAdapter' ? 'stripe' : 'http');
 
       // Track payment attempt
       if (this.metrics?.paymentsAttemptCounter) {

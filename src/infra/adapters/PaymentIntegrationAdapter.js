@@ -27,6 +27,10 @@ class PaymentIntegrationAdapter extends PaymentGatewayPort {
     }
   }
 
+  getProviderName() {
+    return 'http';
+  }
+
   isEnabled() {
     return this.enabled;
   }

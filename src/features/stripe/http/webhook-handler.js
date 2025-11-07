@@ -222,6 +222,8 @@ class StripeWebhookHandler {
 
   extractOrderIdFromDescription(description) {
     // Extract order ID from description like "Order 64abc123..."
+    // Note: This assumes MongoDB ObjectId format (24 hex characters).
+    // If using a different ID format, this pattern should be adjusted.
     if (!description) return null;
     
     const match = description.match(/Order\s+([a-f0-9]{24})/i);

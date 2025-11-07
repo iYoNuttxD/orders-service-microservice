@@ -47,7 +47,9 @@ class InMemoryOrderRepository extends OrderRepository {
   }
 
   async create(orderData) {
-    // Generate MongoDB-like 24-char hex ID
+    // Generate MongoDB-like 24-char hex ID for testing
+    // Note: These are not real MongoDB ObjectIds (they don't include timestamp, machine ID, etc.)
+    // They are hex strings that match the format for testing purposes
     const id = (this.nextId++).toString(16).padStart(24, '0');
     const numero = orderData.numero || `PED${String(this.nextId - 1).padStart(6, '0')}`;
     
