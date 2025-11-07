@@ -14,13 +14,6 @@ const { createSystemRouter, metricsMiddleware } = require('../features/system/ht
 const errorHandler = require('../middlewares/errorHandler');
 const logger = require('../utils/logger');
 
-// Legacy routes (for backward compatibility)
-const clientesRoutes = require('../routes/clientes.routes');
-const restaurantesRoutes = require('../routes/restaurantes.routes');
-const cardapiosRoutes = require('../routes/cardapios.routes');
-const avaliacoesRoutes = require('../routes/avaliacoes.routes');
-const pagamentosRoutes = require('../routes/pagamentos.routes');
-
 /**
  * Connect to MongoDB with retry logic
  */
@@ -110,13 +103,6 @@ function createApp() {
   const ordersRouter = createOrdersRouter(ordersHandlers);
   app.use('/api/v1/pedidos', ordersRouter);
 
-  // Legacy routes (backward compatibility)
-  app.use('/api/v1/clientes', clientesRoutes);
-  app.use('/api/v1/restaurantes', restaurantesRoutes);
-  app.use('/api/v1/cardapios', cardapiosRoutes);
-  app.use('/api/v1/avaliacoes', avaliacoesRoutes);
-  app.use('/api/v1/pagamentos', pagamentosRoutes);
-
   // Root route
   app.get('/', (req, res) => {
     res.json({
@@ -127,12 +113,7 @@ function createApp() {
         health: '/api/v1/health',
         metrics: '/api/v1/metrics',
         docs: '/api-docs',
-        orders: '/api/v1/pedidos',
-        clientes: '/api/v1/clientes',
-        restaurantes: '/api/v1/restaurantes',
-        cardapios: '/api/v1/cardapios',
-        avaliacoes: '/api/v1/avaliacoes',
-        pagamentos: '/api/v1/pagamentos'
+        orders: '/api/v1/pedidos'
       }
     });
   });

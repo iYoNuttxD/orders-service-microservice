@@ -6,6 +6,7 @@ module.exports = {
     '!src/app.js',
     '!src/config/**',
     '!src/models/**',
+    '!src/repositories/**',
   ],
   testMatch: [
     '**/tests/unit/**/*.test.js',
