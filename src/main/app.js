@@ -223,9 +223,11 @@ async function startServer() {
 }
 
 // Export app for testing
-module.exports = createApp();
+const app = createApp();
+module.exports = app;
+module.exports.startServer = startServer;
 
-// Start server only if run directly
-if (require.main === module) {
+// Start server only if run directly or through legacy app.js
+if (require.main === module || require.main.filename.endsWith('/src/app.js')) {
   startServer();
 }

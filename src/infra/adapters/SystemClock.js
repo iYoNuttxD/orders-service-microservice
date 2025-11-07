@@ -1,4 +1,4 @@
-const ClockPort = require('../../../domain/ports/Clock');
+const ClockPort = require('../../domain/ports/Clock');
 
 /**
  * SystemClock

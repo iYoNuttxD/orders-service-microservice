@@ -1,6 +1,6 @@
 const axios = require('axios');
-const PolicyClientPort = require('../../../domain/ports/PolicyClient');
-const logger = require('../../../utils/logger');
+const PolicyClientPort = require('../../domain/ports/PolicyClient');
+const logger = require('../../utils/logger');
 
 /**
  * OPAPolicyClient

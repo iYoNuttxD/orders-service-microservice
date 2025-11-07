@@ -1,4 +1,4 @@
-const IdGeneratorPort = require('../../../domain/ports/IdGenerator');
+const IdGeneratorPort = require('../../domain/ports/IdGenerator');
 
 /**
  * MongoIdGenerator

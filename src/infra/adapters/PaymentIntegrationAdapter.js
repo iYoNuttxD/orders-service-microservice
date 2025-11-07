@@ -1,6 +1,6 @@
 const axios = require('axios');
-const PaymentGatewayPort = require('../../../domain/ports/PaymentGateway');
-const logger = require('../../../utils/logger');
+const PaymentGatewayPort = require('../../domain/ports/PaymentGateway');
+const logger = require('../../utils/logger');
 
 /**
  * PaymentIntegrationAdapter

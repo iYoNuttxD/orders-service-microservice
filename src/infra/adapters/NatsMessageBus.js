@@ -1,6 +1,6 @@
 const { connect, StringCodec } = require('nats');
-const MessageBusPort = require('../../../domain/ports/MessageBus');
-const logger = require('../../../utils/logger');
+const MessageBusPort = require('../../domain/ports/MessageBus');
+const logger = require('../../utils/logger');
 
 /**
  * NatsMessageBus
