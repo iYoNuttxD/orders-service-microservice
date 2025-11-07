@@ -1,4 +1,5 @@
 const axios = require('axios');
+const crypto = require('crypto');
 const PaymentGatewayPort = require('../../domain/ports/PaymentGateway');
 const logger = require('../../utils/logger');
 
@@ -68,11 +69,19 @@ class PaymentIntegrationAdapter extends PaymentGatewayPort {
     try {
       logger.info('Processing payment', { orderId, amount, method });
       
+      // Generate cryptographically secure idempotency key
+      const randomBytes = crypto.randomBytes(8).toString('hex');
+      const idempotencyKey = `order-${orderId}-${randomBytes}`;
+      
       const response = await this.client.post('/payments', {
         amount,
         method,
         orderId,
         metadata
+      }, {
+        headers: {
+          'Idempotency-Key': idempotencyKey
+        }
       });
 
       if (response.data.status === 'APPROVED' || response.data.status === 'approved') {

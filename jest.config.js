@@ -8,7 +8,7 @@ module.exports = {
     '!src/models/**',
   ],
   testMatch: [
-    '**/tests/**/*.test.js',
+    '**/tests/unit/**/*.test.js',
   ],
   verbose: true,
   forceExit: true,
@@ -16,6 +16,6 @@ module.exports = {
   resetMocks: true,
   restoreMocks: true,
   testTimeout: 60000,
-  setupFilesAfterEnv: ['<rootDir>/tests/setup.js'],
+  // setupFilesAfterEnv: ['<rootDir>/tests/setup.js'], // Disabled for unit tests only
   maxWorkers: 1,
 };

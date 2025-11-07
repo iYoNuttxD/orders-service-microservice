@@ -1,4 +1,4 @@
-const OPAPolicyClient = require('../../../src/infra/adapters/OPAPolicyClient');
+const OPAPolicyClient = require('../../src/infra/adapters/OPAPolicyClient');
 const axios = require('axios');
 
 jest.mock('axios');

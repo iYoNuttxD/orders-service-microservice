@@ -85,4 +85,6 @@ pedidoSchema.pre('validate', async function(next) {
   next();
 });
 
-module.exports = mongoose.model('Pedido', pedidoSchema);
+// Support custom collection name from environment
+const collectionName = process.env.ORDERS_COLLECTION || 'pedidos';
+module.exports = mongoose.model('Pedido', pedidoSchema, collectionName);
