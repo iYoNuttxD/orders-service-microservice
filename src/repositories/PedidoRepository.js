@@ -1,4 +1,4 @@
-const Pedido = require('../models/Pedido');
+const Pedido = require('../infra/repositories/mongodb/models/Pedido');
 
 class PedidoRepository {
   async findAll(filters = {}) {
