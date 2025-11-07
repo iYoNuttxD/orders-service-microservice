@@ -46,11 +46,26 @@ class SystemHandlers {
         this.paymentGateway.getStatus()
       ]);
 
-      const overallStatus = 
-        (natsStatus.status === 'disabled' || natsStatus.status === 'healthy') &&
-        (opaStatus.status === 'disabled' || opaStatus.status === 'healthy') &&
-        (paymentStatus.status === 'disabled' || paymentStatus.status === 'healthy')
-          ? 'UP' : 'DEGRADED';
+      // Normalizar caso algum adapter antigo retorne só { enabled: true }
+      function normalize(s) {
+        if (!s) return { status: 'disabled', message: 'No status object' };
+        if (s.status) return s;
+        // Stripe antigo: { enabled: true }
+        return s.enabled
+          ? { status: 'healthy', message: 'Payment gateway enabled (no detailed status)' }
+          : { status: 'disabled', message: 'Payment gateway disabled (no detailed status)' };
+      }
+
+      const nats = normalize(natsStatus);
+      const opa = normalize(opaStatus);
+      const payment = normalize(paymentStatus);
+
+      const overallStatus =
+        ['healthy', 'disabled'].includes(nats.status) &&
+        ['healthy', 'disabled'].includes(opa.status) &&
+        ['healthy', 'disabled'].includes(payment.status)
+          ? 'UP'
+          : 'DEGRADED';
 
       res.json({
         status: overallStatus,
@@ -59,9 +74,9 @@ class SystemHandlers {
         version: '1.0.0',
         database: 'MongoDB Atlas',
         integrations: {
-          nats: natsStatus,
-          opa: opaStatus,
-          payment: paymentStatus
+          nats,
+          opa,
+          payment
         }
       });
     } catch (error) {
