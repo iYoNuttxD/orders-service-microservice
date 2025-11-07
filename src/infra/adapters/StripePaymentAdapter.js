@@ -13,6 +13,10 @@ class StripePaymentAdapter {
       : null;
   }
 
+  getProviderName() {
+    return 'stripe';
+  }
+
   isEnabled() {
     return this.enabled;
   }

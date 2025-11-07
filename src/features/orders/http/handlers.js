@@ -74,10 +74,13 @@ class OrdersHandlers {
   async handlePay(req, res, next) {
     try {
       const { paymentMethod, ...paymentData } = req.body;
+      const idempotencyKey = req.get('Idempotency-Key');
+      
       const result = await this.payOrder.execute({
         orderId: req.params.id,
         paymentMethod,
-        paymentData
+        paymentData,
+        idempotencyKey
       });
       
       res.json({

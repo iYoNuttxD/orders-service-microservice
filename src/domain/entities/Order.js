@@ -18,6 +18,12 @@ class Order {
     dataPedido,
     dataConfirmacao,
     dataEntrega,
+    paymentTransactionId,
+    paymentMethod,
+    paymentProvider,
+    paymentAt,
+    paymentRefundedAt,
+    refundId,
     createdAt,
     updatedAt
   }) {
@@ -35,19 +41,27 @@ class Order {
     this.dataPedido = dataPedido || new Date();
     this.dataConfirmacao = dataConfirmacao;
     this.dataEntrega = dataEntrega;
+    this.paymentTransactionId = paymentTransactionId;
+    this.paymentMethod = paymentMethod;
+    this.paymentProvider = paymentProvider;
+    this.paymentAt = paymentAt;
+    this.paymentRefundedAt = paymentRefundedAt;
+    this.refundId = refundId;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
   }
 
   canTransitionTo(newStatus) {
     const validTransitions = {
-      'PENDENTE': ['CONFIRMADO', 'CANCELADO'],
+      'PENDENTE': ['PAGO', 'CONFIRMADO', 'CANCELADO', 'FAILED_PAYMENT'],
+      'PAGO': ['CONFIRMADO', 'CANCELADO'],
       'CONFIRMADO': ['PREPARANDO', 'CANCELADO'],
       'PREPARANDO': ['PRONTO', 'CANCELADO'],
       'PRONTO': ['EM_ENTREGA'],
       'EM_ENTREGA': ['ENTREGUE'],
       'ENTREGUE': [],
-      'CANCELADO': []
+      'CANCELADO': [],
+      'FAILED_PAYMENT': ['PENDENTE']
     };
 
     return validTransitions[this.status]?.includes(newStatus) || false;
@@ -58,7 +72,30 @@ class Order {
   }
 
   canBePaid() {
-    return ['PENDENTE', 'CONFIRMADO'].includes(this.status);
+    return ['PENDENTE', 'CONFIRMADO', 'FAILED_PAYMENT'].includes(this.status);
+  }
+
+  markAsPaid({ transactionId, method, provider }) {
+    if (!this.canBePaid()) {
+      throw new Error(`Pedido não pode ser pago no status ${this.status}`);
+    }
+    this.status = 'PAGO';
+    this.paymentTransactionId = transactionId;
+    this.paymentMethod = method;
+    this.paymentProvider = provider;
+    this.paymentAt = new Date();
+  }
+
+  markPaymentFailed() {
+    if (!['PENDENTE'].includes(this.status)) {
+      throw new Error(`Cannot mark payment failed from status ${this.status}`);
+    }
+    this.status = 'FAILED_PAYMENT';
+  }
+
+  markAsRefunded({ refundId }) {
+    this.refundId = refundId;
+    this.paymentRefundedAt = new Date();
   }
 
   updateStatus(newStatus) {
@@ -97,6 +134,12 @@ class Order {
       dataPedido: this.dataPedido,
       dataConfirmacao: this.dataConfirmacao,
       dataEntrega: this.dataEntrega,
+      paymentTransactionId: this.paymentTransactionId,
+      paymentMethod: this.paymentMethod,
+      paymentProvider: this.paymentProvider,
+      paymentAt: this.paymentAt,
+      paymentRefundedAt: this.paymentRefundedAt,
+      refundId: this.refundId,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     };

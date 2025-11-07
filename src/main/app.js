@@ -10,6 +10,7 @@ require('dotenv').config();
 
 const container = require('./container');
 const createOrdersRouter = require('../features/orders/http/router');
+const createStripeWebhookRouter = require('../features/stripe/http/router');
 const { createSystemRouter, metricsMiddleware } = require('../features/system/http/handlers');
 const errorHandler = require('../middlewares/errorHandler');
 const logger = require('../utils/logger');
@@ -64,7 +65,16 @@ function createApp() {
   }));
   app.use(cors());
   
-  // Body parsing with size limits
+  // Stripe webhook route (MUST come before body parsing middleware)
+  // This needs raw body for signature verification
+  const stripeWebhookHandler = container.getStripeWebhookHandler();
+  if (stripeWebhookHandler) {
+    const stripeWebhookRouter = createStripeWebhookRouter(stripeWebhookHandler);
+    app.use('/api/v1/stripe', stripeWebhookRouter);
+    logger.info('Stripe webhook endpoint enabled at /api/v1/stripe/webhook');
+  }
+
+  // Body parsing with size limits (comes AFTER webhook route)
   app.use(express.json({ limit: '2mb' }));
   app.use(express.urlencoded({ extended: true, limit: '2mb' }));
   

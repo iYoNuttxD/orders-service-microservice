@@ -47,8 +47,11 @@ class InMemoryOrderRepository extends OrderRepository {
   }
 
   async create(orderData) {
-    const id = String(this.nextId++);
-    const numero = orderData.numero || `PED${String(id).padStart(6, '0')}`;
+    // Generate MongoDB-like 24-char hex ID for testing
+    // Note: These are not real MongoDB ObjectIds (they don't include timestamp, machine ID, etc.)
+    // They are hex strings that match the format for testing purposes
+    const id = (this.nextId++).toString(16).padStart(24, '0');
+    const numero = orderData.numero || `PED${String(this.nextId - 1).padStart(6, '0')}`;
     
     const order = new Order({
       id,
@@ -71,6 +74,23 @@ class InMemoryOrderRepository extends OrderRepository {
     order.updateStatus(status);
     order.updatedAt = new Date();
     
+    return order;
+  }
+
+  async update(id, orderData) {
+    const order = this.orders.get(id);
+    if (!order) {
+      throw new Error('Order not found');
+    }
+
+    // Update order fields
+    Object.keys(orderData).forEach(key => {
+      if (key !== 'id') {
+        order[key] = orderData[key];
+      }
+    });
+    order.updatedAt = new Date();
+
     return order;
   }
 
