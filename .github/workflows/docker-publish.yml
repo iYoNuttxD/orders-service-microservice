@@ -39,7 +39,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Extract metadata
+      - name: Extract metadata (tags, labels)
         id: meta
         uses: docker/metadata-action@v5
         with:
@@ -54,6 +54,7 @@ jobs:
             type=raw,value=latest,enable={{is_default_branch}}
 
       - name: Build and push Docker image
+        id: build
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -64,5 +65,20 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Image digest
-        run: echo ${{ steps.meta.outputs.tags }}
+      - name: Show image tags
+        run: echo "${{ steps.meta.outputs.tags }}"
+
+      - name: Show image digest
+        if: github.event_name != 'pull_request'
+        run: echo "digest=${{ steps.build.outputs.digest }}"
+
+      - name: Job summary
+        if: github.event_name != 'pull_request'
+        run: |
+          {
+            echo "Published tags:"
+            echo "${{ steps.meta.outputs.tags }}"
+            echo
+            echo "Digest:"
+            echo "${{ steps.build.outputs.digest }}"
+          } >> "$GITHUB_STEP_SUMMARY"
