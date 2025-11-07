@@ -3,6 +3,7 @@ require('dotenv').config();
 // Infrastructure
 const MongoOrderRepository = require('../infra/repositories/mongodb/MongoOrderRepository');
 const PaymentIntegrationAdapter = require('../infra/adapters/PaymentIntegrationAdapter');
+const StripePaymentAdapter = require('../infra/adapters/StripePaymentAdapter');
 const OPAPolicyClient = require('../infra/adapters/OPAPolicyClient');
 const NatsMessageBus = require('../infra/adapters/NatsMessageBus');
 const MongoIdGenerator = require('../infra/adapters/MongoIdGenerator');
@@ -48,20 +49,34 @@ class Container {
   // Infrastructure - Adapters
   getPaymentGateway() {
     return this._getSingleton('paymentGateway', () => {
+      const provider = process.env.PAYMENT_PROVIDER || 'http';
+      if (provider === 'stripe') {
+        const config = {
+          secretKey: process.env.STRIPE_SECRET_KEY,
+          currency: process.env.STRIPE_CURRENCY || 'usd',
+          timeout: parseInt(process.env.PAYMENT_TIMEOUT || '10000')
+        };
+        const adapter = new StripePaymentAdapter(config, logger);
+        if (adapter.isEnabled()) {
+          logger.info('Payment gateway enabled (Stripe)', { currency: config.currency });
+        } else {
+          logger.warn('Stripe configured as provider but no STRIPE_SECRET_KEY provided; payment disabled');
+        }
+        return adapter;
+      }
+
+      // Default: HTTP mock/integration adapter
       const config = {
         baseUrl: process.env.PAYMENT_BASE_URL,
         apiKey: process.env.PAYMENT_API_KEY,
         timeout: parseInt(process.env.PAYMENT_TIMEOUT || '10000')
       };
-      
-      const adapter = new PaymentIntegrationAdapter(config);
-      
+      const adapter = new PaymentIntegrationAdapter(config, logger);
       if (adapter.isEnabled()) {
-        logger.info('Payment gateway enabled', { baseUrl: config.baseUrl });
+        logger.info('Payment gateway enabled (HTTP)', { baseUrl: config.baseUrl });
       } else {
         logger.warn('Payment gateway disabled - no config provided');
       }
-      
       return adapter;
     });
   }
@@ -74,18 +89,18 @@ class Container {
         timeout: parseInt(process.env.OPA_TIMEOUT || '5000'),
         failOpen: process.env.OPA_FAIL_OPEN !== 'false' // Default to fail-open
       };
-      
+
       const client = new OPAPolicyClient(config);
-      
+
       if (client.isEnabled()) {
-        logger.info('OPA policy client enabled', { 
+        logger.info('OPA policy client enabled', {
           baseUrl: config.baseUrl,
-          failOpen: config.failOpen 
+          failOpen: config.failOpen
         });
       } else {
         logger.warn('OPA policy client disabled - no config provided');
       }
-      
+
       return client;
     });
   }
@@ -96,15 +111,15 @@ class Container {
         url: process.env.NATS_URL,
         timeout: parseInt(process.env.NATS_TIMEOUT || '5000')
       };
-      
+
       const bus = new NatsMessageBus(config);
-      
+
       if (bus.isEnabled()) {
         logger.info('NATS message bus enabled', { url: config.url });
       } else {
         logger.warn('NATS message bus disabled - no config provided');
       }
-      
+
       return bus;
     });
   }
