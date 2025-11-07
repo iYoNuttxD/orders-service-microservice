@@ -17,11 +17,28 @@ class StripePaymentAdapter {
     return this.enabled;
   }
 
-  getStatus() {
+  async getStatus() {
     if (!this.enabled) {
       return { status: 'disabled', message: 'Stripe not configured' };
     }
-    return { status: 'healthy', message: 'Stripe is operational' };
+    // Health rápido e barato: tentar recuperar a conta
+    try {
+      const account = await this.stripe.accounts.retrieve();
+      return {
+        status: 'healthy',
+        message: 'Stripe is operational',
+        details: {
+          accountId: account.id,
+          displayName: account?.settings?.dashboard?.display_name
+        }
+      };
+    } catch (e) {
+      this.logger?.warn?.('Stripe health check failed', { error: e.message });
+      return {
+        status: 'unhealthy',
+        message: e.message
+      };
+    }
   }
 
   // Contrato esperado pelo PayOrder use-case
@@ -32,8 +49,6 @@ class StripePaymentAdapter {
     try {
       const amountInMinor = Math.round(Number(amount) * 100);
 
-      // Observação: em produção, receba um payment_method vindo do front (Elements/Checkout)
-      // Aqui usamos pm_card_visa (modo de testes)
       const intent = await this.stripe.paymentIntents.create(
         {
           amount: amountInMinor,
