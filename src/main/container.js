@@ -29,16 +29,11 @@ const { SystemHandlers } = require('../features/system/http/handlers');
 
 const logger = require('../utils/logger');
 
-/**
- * Dependency Injection Container
- * Wires all dependencies based on environment configuration
- */
 class Container {
   constructor() {
     this.instances = {};
   }
 
-  // Singleton getter pattern
   _getSingleton(key, factory) {
     if (!this.instances[key]) {
       this.instances[key] = factory();
@@ -46,36 +41,43 @@ class Container {
     return this.instances[key];
   }
 
-  // Infrastructure - Adapters
   getPaymentGateway() {
     return this._getSingleton('paymentGateway', () => {
-      const provider = process.env.PAYMENT_PROVIDER || 'http';
+      const provider = (process.env.PAYMENT_PROVIDER || 'http').trim().toLowerCase();
+      logger.info('DEBUG payment provider selection', {
+        provider,
+        hasStripeKey: !!process.env.STRIPE_SECRET_KEY,
+        stripeKeyPrefix: (process.env.STRIPE_SECRET_KEY || '').slice(0, 7),
+        hasHttpBaseUrl: !!process.env.PAYMENT_BASE_URL,
+        hasHttpApiKey: !!process.env.PAYMENT_API_KEY
+      });
+
       if (provider === 'stripe') {
         const config = {
           secretKey: process.env.STRIPE_SECRET_KEY,
           currency: process.env.STRIPE_CURRENCY || 'usd',
-          timeout: parseInt(process.env.PAYMENT_TIMEOUT || '10000')
+          timeout: parseInt(process.env.PAYMENT_TIMEOUT || '10000', 10)
         };
         const adapter = new StripePaymentAdapter(config, logger);
         if (adapter.isEnabled()) {
           logger.info('Payment gateway enabled (Stripe)', { currency: config.currency });
         } else {
-          logger.warn('Stripe configured as provider but no STRIPE_SECRET_KEY provided; payment disabled');
+          logger.warn('Stripe selected but STRIPE_SECRET_KEY missing; payment disabled');
         }
         return adapter;
       }
 
-      // Default: HTTP mock/integration adapter
+      // Fallback HTTP adapter
       const config = {
         baseUrl: process.env.PAYMENT_BASE_URL,
         apiKey: process.env.PAYMENT_API_KEY,
-        timeout: parseInt(process.env.PAYMENT_TIMEOUT || '10000')
+        timeout: parseInt(process.env.PAYMENT_TIMEOUT || '10000', 10)
       };
-      const adapter = new PaymentIntegrationAdapter(config, logger);
+      const adapter = new PaymentIntegrationAdapter(config);
       if (adapter.isEnabled()) {
         logger.info('Payment gateway enabled (HTTP)', { baseUrl: config.baseUrl });
       } else {
-        logger.warn('Payment gateway disabled - no config provided');
+        logger.warn('Payment gateway disabled (HTTP adapter not configured)');
       }
       return adapter;
     });
