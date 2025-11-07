@@ -73,14 +73,14 @@ class SystemHandlers {
     }
   }
 
-  handleMetrics(req, res) {
-    // Note: register.metrics() is async in newer prom-client versions
-    register.metrics().then(metrics => {
+  async handleMetrics(req, res) {
+    try {
+      const metrics = await register.metrics();
       res.set('Content-Type', register.contentType);
       res.end(metrics);
-    }).catch(error => {
+    } catch (error) {
       res.status(500).json({ error: error.message });
-    });
+    }
   }
 }
 
@@ -110,8 +110,12 @@ function createSystemRouter(handlers) {
     handlers.handleHealth(req, res).catch(next);
   });
   
-  router.get('/metrics', (req, res, next) => {
-    handlers.handleMetrics(req, res).catch(next);
+  router.get('/metrics', async (req, res, next) => {
+    try {
+      await handlers.handleMetrics(req, res);
+    } catch (error) {
+      next(error);
+    }
   });
 
   return router;

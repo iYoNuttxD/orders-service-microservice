@@ -720,3 +720,17 @@
 {"level":"warn","message":"⚠️  Starting server without database connection","service":"orders-service","timestamp":"2025-11-07 12:33:02"}
 {"level":"warn","message":"⚠️  Some features may not work correctly","service":"orders-service","timestamp":"2025-11-07 12:33:02"}
 {"error":"listen EADDRINUSE: address already in use 0.0.0.0:3002","level":"error","message":"Uncaught exception","service":"orders-service","stack":"Error: listen EADDRINUSE: address already in use 0.0.0.0:3002\n    at Server.setupListenHandle [as _listen2] (node:net:1908:16)\n    at listenInCluster (node:net:1965:12)\n    at doListen (node:net:2139:7)\n    at process.processTicksAndRejections (node:internal/process/task_queues:83:21)","timestamp":"2025-11-07 12:33:02"}
+{"error":"connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017","level":"error","message":"❌ MongoDB connection attempt 5/5 failed","service":"orders-service","timestamp":"2025-11-07 12:33:22"}
+{"level":"error","message":"❌ Failed to connect to MongoDB after all retries","service":"orders-service","timestamp":"2025-11-07 12:33:22"}
+{"level":"warn","message":"⚠️  Starting server without database connection","service":"orders-service","timestamp":"2025-11-07 12:33:22"}
+{"level":"warn","message":"⚠️  Some features may not work correctly","service":"orders-service","timestamp":"2025-11-07 12:33:22"}
+{"error":"listen EADDRINUSE: address already in use 0.0.0.0:3002","level":"error","message":"Uncaught exception","service":"orders-service","stack":"Error: listen EADDRINUSE: address already in use 0.0.0.0:3002\n    at Server.setupListenHandle [as _listen2] (node:net:1908:16)\n    at listenInCluster (node:net:1965:12)\n    at doListen (node:net:2139:7)\n    at process.processTicksAndRejections (node:internal/process/task_queues:83:21)","timestamp":"2025-11-07 12:33:22"}
+{"level":"warn","message":"NATS message bus disabled - no config provided","service":"orders-service","timestamp":"2025-11-07 12:34:29"}
+{"level":"warn","message":"OPA policy client disabled - no config provided","service":"orders-service","timestamp":"2025-11-07 12:34:29"}
+{"level":"warn","message":"Payment gateway disabled - no config provided","service":"orders-service","timestamp":"2025-11-07 12:34:29"}
+{"error":"connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017","level":"error","message":"❌ MongoDB connection attempt 1/5 failed","service":"orders-service","timestamp":"2025-11-07 12:34:35"}
+{"level":"info","message":"⏳ Retrying in 2000ms...","service":"orders-service","timestamp":"2025-11-07 12:34:35"}
+{"error":"connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017","level":"error","message":"❌ MongoDB connection attempt 2/5 failed","service":"orders-service","timestamp":"2025-11-07 12:34:42"}
+{"level":"info","message":"⏳ Retrying in 4000ms...","service":"orders-service","timestamp":"2025-11-07 12:34:42"}
+{"level":"info","message":"127.0.0.1 - - [07/Nov/2025:12:34:44 +0000] \"GET /api/v1/metrics HTTP/1.1\" 200 - \"-\" \"curl/8.5.0\"","service":"orders-service","timestamp":"2025-11-07 12:34:44"}
+{"level":"info","message":"127.0.0.1 - - [07/Nov/2025:12:34:44 +0000] \"GET /api/v1/health HTTP/1.1\" 200 352 \"-\" \"curl/8.5.0\"","service":"orders-service","timestamp":"2025-11-07 12:34:44"}
