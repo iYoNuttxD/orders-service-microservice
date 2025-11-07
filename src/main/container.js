@@ -12,7 +12,6 @@ const SystemClock = require('../infra/adapters/SystemClock');
 const ClienteRepository = require('../repositories/ClienteRepository');
 const RestauranteRepository = require('../repositories/RestauranteRepository');
 const CardapioRepository = require('../repositories/CardapioRepository');
-const PedidoRepository = require('../repositories/PedidoRepository');
 
 // Use cases
 const CreateOrder = require('../features/orders/use-cases/CreateOrder');
@@ -139,10 +138,6 @@ class Container {
 
   getCardapioRepository() {
     return CardapioRepository;
-  }
-
-  getPedidoRepository() {
-    return PedidoRepository;
   }
 
   // Use Cases
