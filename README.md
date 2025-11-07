@@ -219,7 +219,7 @@ az webapp create \
 ```
 Configurar variáveis e publicar; verificar com:
 ```bash
-curl https://pedidos-service.azurewebsites.net/api/v1/health
+curl https://orders-service.azurewebsites.net/api/v1/health
 ```
 
 ---
