@@ -734,3 +734,9 @@
 {"level":"info","message":"⏳ Retrying in 4000ms...","service":"orders-service","timestamp":"2025-11-07 12:34:42"}
 {"level":"info","message":"127.0.0.1 - - [07/Nov/2025:12:34:44 +0000] \"GET /api/v1/metrics HTTP/1.1\" 200 - \"-\" \"curl/8.5.0\"","service":"orders-service","timestamp":"2025-11-07 12:34:44"}
 {"level":"info","message":"127.0.0.1 - - [07/Nov/2025:12:34:44 +0000] \"GET /api/v1/health HTTP/1.1\" 200 352 \"-\" \"curl/8.5.0\"","service":"orders-service","timestamp":"2025-11-07 12:34:44"}
+{"level":"warn","message":"NATS message bus disabled - no config provided","service":"orders-service","timestamp":"2025-11-07 12:56:45"}
+{"level":"warn","message":"OPA policy client disabled - no config provided","service":"orders-service","timestamp":"2025-11-07 12:56:45"}
+{"level":"warn","message":"Payment gateway disabled - no config provided","service":"orders-service","timestamp":"2025-11-07 12:56:45"}
+{"level":"warn","message":"NATS message bus disabled - no config provided","service":"orders-service","timestamp":"2025-11-07 12:56:45"}
+{"level":"warn","message":"OPA policy client disabled - no config provided","service":"orders-service","timestamp":"2025-11-07 12:56:45"}
+{"level":"warn","message":"Payment gateway disabled - no config provided","service":"orders-service","timestamp":"2025-11-07 12:56:45"}
