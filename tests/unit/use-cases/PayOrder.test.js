@@ -7,13 +7,15 @@ describe('PayOrder Use Case', () => {
   let orderRepository;
   let paymentGateway;
   let messageBus;
+  let metrics;
 
   beforeEach(() => {
     orderRepository = new InMemoryOrderRepository();
     
     paymentGateway = {
       processPayment: jest.fn(),
-      isEnabled: () => true
+      isEnabled: () => true,
+      constructor: { name: 'StripePaymentAdapter' }
     };
     
     messageBus = {
@@ -21,10 +23,34 @@ describe('PayOrder Use Case', () => {
       isEnabled: () => true
     };
 
+    metrics = {
+      paymentsAttemptCounter: {
+        labels: jest.fn().mockReturnValue({
+          inc: jest.fn()
+        })
+      },
+      paymentsSuccessCounter: {
+        labels: jest.fn().mockReturnValue({
+          inc: jest.fn()
+        })
+      },
+      paymentsFailureCounter: {
+        labels: jest.fn().mockReturnValue({
+          inc: jest.fn()
+        })
+      },
+      paymentLatencyHistogram: {
+        labels: jest.fn().mockReturnValue({
+          observe: jest.fn()
+        })
+      }
+    };
+
     payOrder = new PayOrder({
       orderRepository,
       paymentGateway,
-      messageBus
+      messageBus,
+      metrics
     });
   });
 
@@ -200,5 +226,163 @@ describe('PayOrder Use Case', () => {
     // Assert
     expect(result.payment.transactionId).toBe('TXN789');
     expect(messageBus.publish).not.toHaveBeenCalled();
+  });
+
+  it('should track metrics on successful payment', async () => {
+    // Arrange
+    const order = await orderRepository.create({
+      clienteId: 'cliente123',
+      restauranteId: 'restaurante123',
+      items: [],
+      valorTotal: 100,
+      taxaEntrega: 10,
+      valorFinal: 110,
+      status: 'PENDENTE',
+      enderecoEntrega: {}
+    });
+
+    paymentGateway.processPayment.mockResolvedValue({
+      success: true,
+      transactionId: 'TXN999',
+      status: 'APPROVED',
+      message: 'Payment approved'
+    });
+
+    // Act
+    await payOrder.execute({
+      orderId: order.id,
+      paymentMethod: 'credit_card'
+    });
+
+    // Assert
+    expect(metrics.paymentsAttemptCounter.labels).toHaveBeenCalledWith('stripe');
+    expect(metrics.paymentsSuccessCounter.labels).toHaveBeenCalledWith('stripe');
+    expect(metrics.paymentLatencyHistogram.labels).toHaveBeenCalledWith('stripe', 'success');
+  });
+
+  it('should track metrics on failed payment', async () => {
+    // Arrange
+    const order = await orderRepository.create({
+      clienteId: 'cliente123',
+      restauranteId: 'restaurante123',
+      items: [],
+      valorTotal: 50,
+      taxaEntrega: 5,
+      valorFinal: 55,
+      status: 'PENDENTE',
+      enderecoEntrega: {}
+    });
+
+    paymentGateway.processPayment.mockResolvedValue({
+      success: false,
+      status: 'DECLINED',
+      message: 'Insufficient funds'
+    });
+
+    // Act & Assert
+    await expect(
+      payOrder.execute({
+        orderId: order.id,
+        paymentMethod: 'credit_card'
+      })
+    ).rejects.toThrow('Insufficient funds');
+
+    expect(metrics.paymentsAttemptCounter.labels).toHaveBeenCalledWith('stripe');
+    expect(metrics.paymentsFailureCounter.labels).toHaveBeenCalledWith('stripe');
+    expect(metrics.paymentLatencyHistogram.labels).toHaveBeenCalledWith('stripe', 'failure');
+  });
+
+  it('should use provided idempotency key', async () => {
+    // Arrange
+    const order = await orderRepository.create({
+      clienteId: 'cliente123',
+      restauranteId: 'restaurante123',
+      items: [],
+      valorTotal: 50,
+      taxaEntrega: 5,
+      valorFinal: 55,
+      status: 'PENDENTE',
+      enderecoEntrega: {}
+    });
+
+    paymentGateway.processPayment.mockResolvedValue({
+      success: true,
+      transactionId: 'TXN_CUSTOM',
+      status: 'APPROVED'
+    });
+
+    // Act
+    await payOrder.execute({
+      orderId: order.id,
+      paymentMethod: 'credit_card',
+      idempotencyKey: 'custom-key-123'
+    });
+
+    // Assert
+    expect(paymentGateway.processPayment).toHaveBeenCalledWith(
+      expect.objectContaining({
+        idempotencyKey: 'custom-key-123'
+      })
+    );
+  });
+
+  it('should return existing payment for already paid order (idempotent)', async () => {
+    // Arrange
+    const order = await orderRepository.create({
+      clienteId: 'cliente123',
+      restauranteId: 'restaurante123',
+      items: [],
+      valorTotal: 50,
+      taxaEntrega: 5,
+      valorFinal: 55,
+      status: 'PAGO',
+      paymentTransactionId: 'TXN_EXISTING',
+      enderecoEntrega: {}
+    });
+
+    // Act
+    const result = await payOrder.execute({
+      orderId: order.id,
+      paymentMethod: 'credit_card'
+    });
+
+    // Assert
+    expect(result.payment.transactionId).toBe('TXN_EXISTING');
+    expect(result.payment.message).toContain('idempotent');
+    expect(paymentGateway.processPayment).not.toHaveBeenCalled();
+  });
+
+  it('should update order with payment metadata', async () => {
+    // Arrange
+    const order = await orderRepository.create({
+      clienteId: 'cliente123',
+      restauranteId: 'restaurante123',
+      items: [],
+      valorTotal: 100,
+      taxaEntrega: 10,
+      valorFinal: 110,
+      status: 'PENDENTE',
+      enderecoEntrega: {}
+    });
+
+    paymentGateway.processPayment.mockResolvedValue({
+      success: true,
+      transactionId: 'TXN_METADATA',
+      status: 'APPROVED'
+    });
+
+    // Act
+    await payOrder.execute({
+      orderId: order.id,
+      paymentMethod: 'credit_card'
+    });
+
+    // Assert
+    const updatedOrder = await orderRepository.findById(order.id);
+    expect(updatedOrder.status).toBe('PAGO');
+    expect(updatedOrder.paymentTransactionId).toBe('TXN_METADATA');
+    expect(updatedOrder.paymentMethod).toBe('credit_card');
+    expect(updatedOrder.paymentProvider).toBe('stripe');
+    expect(updatedOrder.paymentAt).toBeInstanceOf(Date);
   });
 });
