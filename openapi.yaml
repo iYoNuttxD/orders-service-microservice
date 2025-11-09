@@ -27,7 +27,7 @@ info:
 servers:
   - url: /api/v1
     description: Relative path (recommended for Swagger UI)
-  - url: https://orders-service.azurewebsites.net/api/v1
+  - url: https://delivery-service-api.azurewebsites.net/api/v1
     description: Azure Production Server
   - url: http://localhost:3002/api/v1
     description: Local Development Server
