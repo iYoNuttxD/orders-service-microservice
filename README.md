@@ -9,6 +9,11 @@ Imagem Docker: **[iyonuttxd/orders-service (Docker Hub)](https://hub.docker.com/
 
 ---
 
+# Feito Por
+
+Daniel Ganz Musse, João Vitor de Souza Hernandes, Flavio Augusto da Cruz Melo, Matheus 
+Lowen, Enrico Malho Bozza 
+
 ## 🎯 Funcionalidades
 
 ✅ **Arquitetura Limpa (Clean Architecture)**  
